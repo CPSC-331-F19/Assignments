@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1569147969 "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.tex" "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.pdf" "main" 1569148152
+["pdflatex"] 1569148871 "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.tex" "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.pdf" "main" 1569148887
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1549435295 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1549433815 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1549433815 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -59,13 +59,15 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1549438793 3265573 655ac40406f2c37c0d9078d533adef20 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1549438883 4223236 b4eb0898172d15fa119b8da65cf99e81 ""
   "c:/texlive/2018/texmf.cnf" 1549438754 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.aux" 1569147970 44 dc97af5c6f573c3ca8db466309c44817 ""
-  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.tex" 1569148151 15526 5681a543888cbe2261e8c9bf7f977fe1 ""
-  "main.aux" 1569147970 44 dc97af5c6f573c3ca8db466309c44817 ""
-  "main.tex" 1569148151 15526 5681a543888cbe2261e8c9bf7f977fe1 ""
+  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.aux" 1569148872 44 dc97af5c6f573c3ca8db466309c44817 ""
+  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.tex" 1569148886 15502 f199756e14e8dded965dfc211887d536 ""
+  "main.aux" 1569148872 44 dc97af5c6f573c3ca8db466309c44817 ""
+  "main.tex" 1569148886 15502 f199756e14e8dded965dfc211887d536 ""
   (generated)
-  "main.pdf"
+  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.log"
   "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.log"
+  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.pdf"
+  "main.pdf"
+  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.pdf"
   "main.aux"
   "main.log"
-  "d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.pdf"

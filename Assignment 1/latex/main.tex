@@ -185,7 +185,7 @@
         \end{cases}
     \]
 
-    \hspace*{-6mm}then $T_{smacG}(n) \geq \left(\frac{3}{2}\right)^n$ for every non-negative integer $n$ and therefore
+    \noindent then $T_{smacG}(n) \geq \left(\frac{3}{2}\right)^n$ for every non-negative integer $n$ and therefore
     the number of steps executed by the $smacG$ algorithm is at least exponential in its input.
 \end{problem}
 
@@ -193,7 +193,7 @@
 This will be established by induction on $n$. The strong form of mathematical induction will be used 
 and the cases $n = 0$, $n=1$, $n=2$ and $n=3$ will be considered in the basis.\\
 
-\hspace*{-6mm}\textit{Basis}. If $n=0$, then $T_{smacG}\left(n\right) = T_{smacG}\left(0\right) = 2$, and 
+\noindent \textit{Basis}. If $n=0$, then $T_{smacG}\left(n\right) = T_{smacG}\left(0\right) = 2$, and 
 \begin{flalign*}
     \hspace*{5mm}T_{smacG}(n) &\geq \left(\frac{3}{2}\right)^n &&\text{} \\
     T_{smacG}\left(0\right) &\geq \left(\frac{3}{2}\right)^0 &&\text{} \\
@@ -219,17 +219,17 @@ as required. If $n=3$, then $T_{smacG}\left(n\right) = T_{smacG}\left(3\right) =
 \end{flalign*}
 as required. \\
 
-\hspace*{-6mm}\textit{Inductive Step}. Let $k \geq 4$ be an integer. It is necessary and sufficient
+\noindent \textit{Inductive Step}. Let $k \geq 4$ be an integer. It is necessary and sufficient
 to use the following \\
 
 \underline{Inductive Hypothesis}: $T_{smacG}\left(m\right) \geq \left(\frac{3}{2}\right)^{m}$
 for every integer $m$ such that $0 \leq m \leq k$. \\
 
-\hspace*{-6mm}to prove the following \\
+\noindent to prove the following \\
 
 \underline{Inductive Claim}: $T_{smacG}\left(k+1\right) \geq \left(\frac{3}{2}\right)^{k+1}$ \\
 
-\hspace*{-6mm}Now, since $k+1 > 4$,
+\noindent Now, since $k+1 > 4$,
 
 \begin{flalign*}
     \hspace*{5mm}T_{smacG}(k+1) &= T_{smacG}(k) + T_{smacG}(k-2) + T_{smacG}(k-3) + 5 \\
@@ -240,7 +240,7 @@ for every integer $m$ such that $0 \leq m \leq k$. \\
     &\geq \left(\frac{3}{2}\right)^{k+1} &&\text{(because $\frac{94}{81} > 1$)}\\
 \end{flalign*}
 
-\hspace*{-6mm}thus establishing the inductive claim, as needed. Therefore, by principle of induction 
+\noindent thus establishing the inductive claim, as needed. Therefore, by principle of induction 
 $T_{smacG}\left(n\right) \geq \left(\frac{3}{2}\right)^{n}$ for all non-negative integers $n$.
 
 \end{proof} 

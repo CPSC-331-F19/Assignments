@@ -1,9 +1,9 @@
-PWD d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex
+PWD d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex
 INPUT c:/texlive/2018/texmf.cnf
 INPUT c:/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.tex
-OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.log
+INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.tex
+OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.log
 INPUT c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2018/texmf-dist/tex/latex/base/size12.clo
@@ -46,9 +46,9 @@ INPUT c:/texlive/2018/texmf-dist/tex/latex/koma-script/scrlfile.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/koma-script/scrlfile.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.aux
-INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.aux
-OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.aux
+INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.aux
+INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.aux
+OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.aux
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
@@ -83,13 +83,13 @@ INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.pdf
+OUTPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.pdf
 INPUT c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/assignment_1/latex/main.aux
+INPUT d:/Dropbox/Education/UofC/2019-2020/FALL/CPSC 331/Assignments/Assignments/Assignment 1/latex/main.aux
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb

@@ -23,6 +23,8 @@
 hs_err_pid*
 
 *.aux
+*.fls
+*.fdb_latexmk
 *.glo
 *.idx
 *.log

@@ -349,10 +349,35 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 % --------------------------------------------------------------
 
 \begin{problem}{10}
-\end{problem}
 
-\begin{proof}
-\end{proof}
+Consider the $fmacG(n)$ function being executed such that the precondition for the “MacGonagall Mystery Computation” problem is satisfied. The precondition of this problem assumes that is a non-negative integer before execution of the algorithm begins, that is $n \geq 0$. \\
+
+\noindent
+If n = 0, then the test at line 1 passes, and the execution of the algorithm halts after reaching line 2. \\
+
+\noindent
+If n = 1, then the test at line 1 fails, and the execution of the algorithm proceeds and passes the test at line 3, where the execution of the algorithm halts after the line 4. \\
+
+\noindent
+If n = 2, then the test at line 1 and 3 fail, and the execution of the algorithm proceeds and passes the test at line 5, where the execution of the algorithm halts after the execution of line 6. \\
+
+\noindent
+If n = 3, then the test at line 1, 3, and 5 fail, and the execution of the algorithm proceeds and passes the test at line 7, where the execution of the algorithm halts after the execution of line 8. \\
+
+\noindent
+Otherwise, if $n \geq 4$, the test at lines 1, 3, 5, and 7 fail, and the steps at lines $9 \rightarrow 14$ execute, and the execution of the loop body begins.
+
+\begin{itemize}
+    \item The loop test at line 15 simply compares the integer input $n$ and a counter variable $i$, thus it has no side effects, and each execution of this loop body eventually halts.
+    \item The body of this while loop is simply two assignment statements, thus every execution of the loop body halts as well.
+    \item As noted in question (9), this while loop has a bound function.
+\end{itemize}
+
+\noindent
+It can now be proved by ``Loop Theorem #2'' that the execution of the while loop terminates. The execution of this algorithm terminates after the execution of the return statement at line 18, which establishes the claim. It now follows in question $(11)$ that this algorithm is correct.
+
+
+\end{problem}
 
 
 % --------------------------------------------------------------

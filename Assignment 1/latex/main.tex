@@ -11,6 +11,8 @@
 \newcommand{\I}{\mathbb{I}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\lbr}{\lbrace}
+\newcommand{\rbr}{\rbrace}
 \renewcommand{\qed}{\hfill$\blacksquare$}
 \let\newproof\proof
 % \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
@@ -253,9 +255,17 @@ $T_{smacG}\left(n\right) \geq \left(\frac{3}{2}\right)^{n}$ for all non-negative
 % --------------------------------------------------------------
 
 \begin{problem}{6}
+State a loop invariant for the while loop at lines $15 \-- 17$
+of this algorithm
 \end{problem}
 
 \begin{proof}
+\begin{enumerate}
+        \item \textit{n} is an integer input such that $n \geq 4$
+        \item \textit{i} is an integer variable such that $4 \leq i \leq n$
+        \item \textit{M} is an integer array with length $n+1$
+        \item $M_{j} = fmacG_{j}$ for every integer j such that $ 0 \leq j \leq i$
+   \end{enumerate}
 \end{proof}
 
 
@@ -264,9 +274,22 @@ $T_{smacG}\left(n\right) \geq \left(\frac{3}{2}\right)^{n}$ for all non-negative
 % --------------------------------------------------------------
 
 \begin{problem}{7}
+Prove that your answer for the previous question really is a loop invariant for the while
+loop in this algorithm.
 \end{problem}
 
 \begin{proof}
+We will use Loop Theorem 1 to prove this loop invariant.
+\begin{enumerate}
+    \item The loop test at \textit{line 15} has no side effects. 
+    \item Consider the execution of the algorithm with the precondition for the ``MacGonagall Mystery Computation" satisfied. There is nothing to be proved if the while loop at \textit{line 15} is never reached, so if tests at \textit{line 1, 3, 5, 7} fail, then \textit{lines 9-15} are executed. By the inspection of code, we can say that the loop is not executed more than once. So it suffices us to consider the first execution of the loop. 
+    \\
+    The precondition for the ``MacGonagall Mystery Computation" states that $n$ needs to be a non-negative integer i.e. $n \geq 0$ when the execution of the algorithm begins and by inspection, the value of $n$ never changes. Furthermore, $n \neq 1,2,3$ as tests at \textit{line 1, 3, 5 and 7} pass and the loop is never reached. Thus, $n \geq 4$ which establishes part 1 of the loop invariant when the execution of loop begins. One can see by the inspection of the code, $i$ is an integer variable with a value of $4$ when the execution of the loop begins, since $n \geq 4$, this establishes part 2 of the loop invariant when the execution of the loop begins. Since $M$ is an \textit{integer-array} variable whose length is set to be $n+1$. Finally, since \emph{lines 10, 11, 12, and 13} have been executed (and M is not changed at step 14), $M[0] = fmacG_{0}, M[1] = fmacG_{1}, M[2] = fmacG_{2}, and M[3] = fmacG_{3}$. Since $i=4, M[j] = fmacG_{j}$ for every integer $j$ such that $0 \leq i \leq j$. Thus, the fourth part of the assertion before the execution of the loop body, as required for the proof of the claim.
+    
+    \item Consider an execution of the body of this loop that begins with the proposed "loop invariant" satisfied. It follows by \emph{part 1} of the loop invariant that $n$ is initially and integer variable such that $n \geq 4$ and since, the value of $n$ is not changed during the executions of \emph{line 16, 17}, this is also true when the execution of this loop ends. It follows by \emph{part 2} of the loop invariant that $i$ is an integer variable such that $4 \leq i \leq n$. Since, the test at \emph{line 15} was checked and passed, $i < n$ so that $4 \leq i \leq n-1$ at this point.
+    When the value of n is never changed, the value of $i$ is increased by one during the execution of \emph{line 17}, so $5 \leq i \leq n$ at the end of the execution of this loop body and \emph{part 2} of the loop invariant is satisfied at the end of this execution of the loop body as well.
+    
+   \end{enumerate}
 \end{proof}
 
 

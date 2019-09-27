@@ -338,9 +338,25 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 % --------------------------------------------------------------
 
 \begin{problem}{9}
+    The function $f\left(n,i\right) = n - (i - 1)$ is a bound function for the while
+    loop in this algorithm. 
 \end{problem}
 
-\begin{proof}
+\begin{proof} Consider the above function $f$. \\
+
+    \noindent Since $n$ is an integer input and $i$ is an integer variable, defined and 
+    initialized at step 14, this is certainly an integer-valued total function of
+    some of the inputs, variables and global data in the $fmacG$ algorithm. \\
+
+    \noindent When the body of the while loop is executed, the value of $i$ is increased
+    by one (at step 17) and the value of $n$ is not changed. Hence, the value of $f$ is
+    decreased by at least one. \\
+
+    \noindent If the value of $f$ is less than zero then $n-(i-1) < 0$, so that $i > n$ and the loop
+    test (at line 15) fails, causing the execution of the loop to halt. \\
+
+    \noindent It then follows by definition of a bound function for a while loop that $f$ is a bound 
+    function for the while loop in the $fmacG$ algorithm, as claimed.
 \end{proof}
 
 

@@ -4,6 +4,7 @@
 \usepackage{amsmath,amsthm,amssymb,scrextend}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
+\usepackage{fancyvrb}
 \pagestyle{fancy}
  
 \newcommand{\N}{\mathbb{N}}
@@ -116,11 +117,56 @@
 %                         3
 % --------------------------------------------------------------
 
-\begin{problem}{3}
+\begin{problem}{3} $\:$
+\begin{Verbatim}[fontsize=\small]
+package cpsc331.assignment1;
+
+public class SMacGonagall {
+
+    public static void main(String[] args) {
+
+        if (args.length != 1) {
+            System.out.println("Fiddlesticks! One integer input is required.");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n < 0) {
+                System.out.println("Fiddlesticks! The integer input cannot be negative.");
+            } else {
+                System.out.println(smacG(n));
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fiddlesticks! One integer input is required.");
+        }
+
+    }
+
+    public static int smacG(int n) throws IllegalArgumentException {
+
+        if(n < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (n) {
+            case 0:
+                return 1;
+            case 1:
+                return 0;
+            case 2:
+                return 5;
+            case 3:
+                return 8;
+            default:
+                return 2 * smacG(n - 1) - 2 * smacG(n - 3) + smacG(n - 4);
+        }
+
+    }
+}
+\end{Verbatim}
 \end{problem}
 
-\begin{proof}
-\end{proof}
 
 
 % --------------------------------------------------------------
@@ -406,11 +452,64 @@ It can now be proved by ``Loop Theorem #2'' that the execution of the while loop
 %                         13
 % --------------------------------------------------------------
 
-\begin{problem}{13}
-\end{problem}
+\begin{problem}{13} $\:$
+\begin{Verbatim}[fontsize=\small]
+package cpsc331.assignment1;
 
-\begin{proof}
-\end{proof}
+public class FMacGonagall {
+
+    public static void main(String[] args) {
+
+        if (args.length != 1) {
+            System.out.println("Fiddlesticks! One integer input is required.");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n < 0) {
+                System.out.println("Fiddlesticks! The integer input cannot be negative.");
+            } else {
+                System.out.println(fmacG(n));
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Fiddlesticks! One integer input is required.");
+        }
+
+    }
+
+    public static int fmacG(int n) throws IllegalArgumentException {
+
+        if (n < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (n) {
+            case 0:
+                return 1;
+            case 1:
+                return 0;
+            case 2:
+                return 5;
+            case 3:
+                return 8;
+            default:
+                int[] M = new int[n + 1];
+                M[0] = 1;
+                M[1] = 0;
+                M[2] = 5;
+                M[3] = 8;
+                int i = 4;
+                while (i <= n) {
+                    M[i] = 2 * M[i - 1] - 2 * M[i - 3] + M[i - 4];
+                    i++;
+                }
+                return M[n];
+        }
+    }
+}
+\end{Verbatim}
+\end{problem}
 
 
 % --------------------------------------------------------------

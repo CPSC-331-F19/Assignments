@@ -75,7 +75,7 @@
 % --------------------------------------------------------------
 
 \begin{problem}{2}
-    Prove that the smacG algorithm correctly solves the ``MacGonagall Mystery Computation" problem.
+    Prove that the smacG algorithm correctly solves the "MacGonagall Mystery Computation" problem.
 \end{problem}
 
 \begin{proof}
@@ -117,20 +117,19 @@
 %                         3
 % --------------------------------------------------------------
 
-\begin{problem}{3} 
-Write a Java program, SMacGonagall.java
-\end{problem}
-
-\begin{proof}
-$\:$
+\begin{problem}{3} $\:$
 \begin{Verbatim}[fontsize=\small]
 package cpsc331.assignment1;
+
 public class SMacGonagall {
+
     public static void main(String[] args) {
+
         if (args.length != 1) {
             System.out.println("Fiddlesticks! One integer input is required.");
             return;
         }
+
         try {
             int n = Integer.parseInt(args[0]);
             if (n < 0) {
@@ -141,11 +140,15 @@ public class SMacGonagall {
         } catch (NumberFormatException e) {
             System.out.println("Fiddlesticks! One integer input is required.");
         }
+
     }
+
     public static int smacG(int n) throws IllegalArgumentException {
+
         if(n < 0) {
             throw new IllegalArgumentException();
         }
+
         switch (n) {
             case 0:
                 return 1;
@@ -158,10 +161,11 @@ public class SMacGonagall {
             default:
                 return 2 * smacG(n - 1) - 2 * smacG(n - 3) + smacG(n - 4);
         }
+
     }
 }
 \end{Verbatim}
-\end{proof}
+\end{problem}
 
 
 
@@ -170,12 +174,6 @@ public class SMacGonagall {
 % --------------------------------------------------------------
 
 \begin{problem}{4}
-Let $T_{smacG}(n)$ be the number of steps included in the execution of the algorithm, $smacG$,
-shown in Figure 1 on input n, for a non-negative integer n — assuming that the uniform
-cost criterion is used to define this and the only steps counted are the numbered steps
-shown in Figure 1.
-\\
-Give a recurrence for $T_{smacG}(n)$.
 \end{problem}
 
 \begin{proof}
@@ -346,20 +344,14 @@ We will use Loop Theorem 1 to prove this loop invariant.
 % --------------------------------------------------------------
 
 \begin{problem}{8}
- Use this to prove that this algorithm is \textbf{partially correct}.
-\end{problem}
-
-
-\begin{proof}
-
 
 \noindent
-By inspection of the function signature for $fmacG(n)$, this algorithm has no undocumented side effects - that is it does not access or change inputs or global data, and does not create outputs unless documented in the ``MacGongall Mystery Computation" problem. \\
+By inspection of the function signature for $fmacG(n)$, this algorithm has no undocumented side effects - that is it does not access or change inputs or global data, and does not create outputs unless documented in the “MacGongall Mystery Computation” problem. \\
 
 \noindent
-It now suffices to show that if the $fmacG(n)$ is executed when the precondition for the ``MacGongall Mystery Computation" is satisfied, then either:
+It now suffices to show that if the $fmacG(n)$ is executed when the precondition for the “MacGongall Mystery Computation” is satisfied, then either:
 \begin{enumerate}[label=(\alph*)]
-\item The execution of the algorithm halts, with the post-condition for the ``MacGongall Mystery Computation" problem being satisfied when this occurs, or alternatively
+\item The execution of the algorithm halts, with the postcondition for the “MacGongall Mystery Computation” problem being satisfied when this occurs, or alternatively
 \item The algorithm runs forever, whereby the algorithm never halts at all
 \end{enumerate}
 
@@ -383,9 +375,9 @@ If the algorithm does not halt during loop body execution, then the loop invaria
 \end{itemize}
 
 \noindent
-It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$, such that the nth MacGonagall has been returned as output following the return statement at line 18 being executed, whereby condition $(a)$ has been satisfied.
+It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$, such that the nth MacGonagal has been returned as output following the return statement at line 18 being executed, whereby condition $(a)$ has been satisfied.
 
-\end{proof}
+\end{problem}
 
 % --------------------------------------------------------------
 %                         9
@@ -419,11 +411,6 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 % --------------------------------------------------------------
 
 \begin{problem}{10}
- Prove that if this algorithm is executed when the precondition for the ``MacGonagall Mystery Computation" problem is satisfied, and the while loop is reached and executed, then the execution of the loop eventually ends.
-\end{problem}
-
-\begin{proof}
-
 
 Consider the $fmacG(n)$ function being executed such that the precondition for the “MacGonagall Mystery Computation” problem is satisfied. The precondition of this problem assumes that is a non-negative integer before execution of the algorithm begins, that is $n \geq 0$. \\
 
@@ -452,7 +439,7 @@ Otherwise, if $n \geq 4$, the test at lines 1, 3, 5, and 7 fail, and the steps a
 It can now be proved by ``Loop Theorem \#2'' that the execution of the while loop terminates. The execution of this algorithm terminates after the execution of the return statement at line 18, which establishes the claim. It now follows in question $(11)$ that this algorithm is correct.
 
 
-\end{proof}
+\end{problem}
 
 
 % --------------------------------------------------------------
@@ -460,20 +447,9 @@ It can now be proved by ``Loop Theorem \#2'' that the execution of the while loo
 % --------------------------------------------------------------
 
 \begin{problem}{11}
-Using what has been proved so far, complete a proof that the fmacG algorithm correctly
-solves the “MacGonagall Mystery Computation" problem.
-
 \end{problem}
 
 \begin{proof}
-According to the notes from Lecture 3, Claim \#7 ``If an algorithm, for a given computational problem, is
-both partially correct and terminates, whenever it is executed when its problem’s precondition initially satisfied, then this algorithm is correct".
-\\ 
-\\
-The proof from \textbf{Problem 8} proves the partial correctness of the ``MacGongall Mystery Computation" problem and the proof from \textbf{Problem 10} proves the termination of the ``MacGongall Mystery Computation" problem.
-\\
-Since, the algorithm is both partially correct and terminates, whenever it is executed it's precondition satisfied, it will be correct. 
-
 \end{proof}
 
 
@@ -482,14 +458,9 @@ Since, the algorithm is both partially correct and terminates, whenever it is ex
 % --------------------------------------------------------------
 
 \begin{problem}{12}
-Let $T_{fmacG}(n)$ be the number of steps executed by the algorithm fmacG when executed
-on input $n$, for a natural number n — as defined using the Uniform Cost Criterion (and
-counting only the numbered steps shown in Figure 2) — so that, for example, $T_{fmacG}(0) = 2$, because the steps at lines $1$ and $2$ are carried out when this algorithm is executed on input 0. Using techniques introduce in this course, give an upper bound for $T_{fmacG}(n)$, as a function of n, that is as precise as you can. Your final answer should be ``in closed form", so that it does not include any summations or recurrences.
+    An upper bound function for $T_{fmacG}(n)$ in its closed form can be found by the following 
+    methods. 
 \end{problem}
-
-\begin{proof}
-An upper bound function for $T_{fmacG}(n)$ in its closed form can be found by the following methods. 
-
 
 \noindent Suppose, first that the algorithm is executed with input $n=0$. \\
 
@@ -575,24 +546,24 @@ An upper bound function for $T_{fmacG}(n)$ in its closed form can be found by th
         
 \end{itemize}
 
-\end{proof}
+
 % --------------------------------------------------------------
 %                         13
 % --------------------------------------------------------------
 
-\begin{problem}{13}
- Write a Java program, FMacGonagall.java
-\end{problem}
-\begin{proof}
-$\:$
+\begin{problem}{13} $\:$
 \begin{Verbatim}[fontsize=\small]
 package cpsc331.assignment1;
+
 public class FMacGonagall {
+
     public static void main(String[] args) {
+
         if (args.length != 1) {
             System.out.println("Fiddlesticks! One integer input is required.");
             return;
         }
+
         try {
             int n = Integer.parseInt(args[0]);
             if (n < 0) {
@@ -603,11 +574,15 @@ public class FMacGonagall {
         } catch (NumberFormatException e) {
             System.out.println("Fiddlesticks! One integer input is required.");
         }
+
     }
+
     public static int fmacG(int n) throws IllegalArgumentException {
+
         if (n < 0) {
             throw new IllegalArgumentException();
         }
+
         switch (n) {
             case 0:
                 return 1;
@@ -633,7 +608,7 @@ public class FMacGonagall {
     }
 }
 \end{Verbatim}
-\end{proof}
+\end{problem}
 
 
 % --------------------------------------------------------------

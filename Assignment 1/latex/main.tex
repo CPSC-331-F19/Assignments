@@ -723,11 +723,79 @@ public class FMacGonagall {
 % --------------------------------------------------------------
     
 \begin{problem}{14}
+    Suppose that $M$ is a function of the non-negative integers such that,
+    for every integer $n \geq 0$, \\
+
+    \[  
+        \hspace*{-91mm}M(n) =
+        \begin{cases} 
+        1 & i = 0 \\
+        0 & i = 1 \\
+        5 & i = 2 \\
+        8 & i = 3 \\
+        2M_{i-1} - 2M_{i-3} + M_{i-4} & i \geq 4 
+        \end{cases}
+    \] \\
+
+    \noindent Then, the closed form formula is $M(n) = n^2 + (-1)^n$. 
 \end{problem}
 
 \begin{proof}
-\end{proof}
+    This will be established by induction on $n$. The strong form of mathematical
+    induction will be used and the cases $n=0$, $n=1$, $n=2$, and $n=3$ will be considered in
+    the basis. 
 
+    \noindent \textit{Basis}. If $n=0$, then $M(n) = M(0) = 1$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(0) &= 0^2 + (-1)^0 \\
+        &= 1 
+    \end{flalign*}
+
+    \noindent If $n=1$, then $M(n) = M(1) = 0$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(1) &= 1^2 + (-1)^1 \\
+        &= 0 
+    \end{flalign*}
+    
+    \noindent If $n=2$, then $M(n) = M(2) = 5$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(2) &= 2^2 + (-1)^2 \\
+        &= 5 
+    \end{flalign*}
+
+    \noindent If $n=3$, then $M(n) = M(3) = 8$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(3) &= 3^2 + (-1)^3 \\
+        &= 8 
+    \end{flalign*}
+
+    \noindent \textit{Inductive Step}. Let $k \geq 4$ be an integer. It is necessary and sufficient
+    to use the following \\
+
+    \underline{Inductive Hypothesis}: $M_{i} = i^2 + (-1)^i$
+    for every integer $i$ such that $0 \leq i \leq k$. \\
+
+    \noindent to prove the following \\
+
+    \underline{Inductive Claim}: $M_{k+1} = \left(k+1\right)^2 + (-1)^{k+1}$ \\
+
+    \noindent Now, 
+    \begin{flalign*}
+        \hspace*{5mm}M_{k+1} &= 2M_k - 2M_{k-2} + M_{k-3} &&\text{}\\
+        &= 2(k^2+(-1)^k) - 2((k-2)^2+(-1)^{K-2}) + (k-3)^2 + (-1)^{k-3} &&\text{(from IH)} \\
+        &= 2k^2 + 2(-1)^k - 2(k-2)^2 - 2(-1)^{k-2} + (k-3)^2 + (-1)^{k-3} \\
+        &= \left(k^2 + 2k + 1\right) + (-1)^k[2-2(-1)^{-2} + (-1)^{-3}] \\
+        &= (k+1)^2 + (-1)^{k+1}
+    \end{flalign*}
+
+    \noindent thus establishing the inductive claim, as required. Thefore, by principle of
+    induction, $M(n) = n^2 + (-1)^n$ for all non-negative integers $n$.
+
+\end{proof}
  
 % --------------------------------------------------------------
 %     You don't have to mess with anything below this line.

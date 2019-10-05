@@ -75,7 +75,7 @@
 % --------------------------------------------------------------
 
 \begin{problem}{2}
-    Prove that the smacG algorithm correctly solves the "MacGonagall Mystery Computation" problem.
+    Prove that the smacG algorithm correctly solves the ``MacGonagall Mystery Computation" problem.
 \end{problem}
 
 \begin{proof}
@@ -120,8 +120,26 @@
 \begin{problem}{3} $\:$
 \begin{Verbatim}[fontsize=\small]
 package cpsc331.assignment1;
+/**
+ *
+ * A class for the recursive computation of the MacGonagall Mystery sequence
+ *
+ * @author Steven Ferguson (30037518)
+ * @author Daniel Contreras (10080311)
+ * @author Guransh Mangat (30061719)
+ * @version 1.0
+ *
+ */
 
 public class SMacGonagall {
+
+    /**
+     *
+     * The main method for this class.
+     *
+     * @param args A single non-negative integer n.
+     *
+     */
 
     public static void main(String[] args) {
 
@@ -132,18 +150,36 @@ public class SMacGonagall {
 
         try {
             int n = Integer.parseInt(args[0]);
-            if (n < 0) {
-                System.out.println("Fiddlesticks! The integer input cannot be negative.");
-            } else {
-                System.out.println(smacG(n));
-            }
+            System.out.println(smacG(n));
         } catch (NumberFormatException e) {
             System.out.println("Fiddlesticks! One integer input is required.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Fiddlesticks! The integer input cannot be negative.");
         }
 
     }
 
+    /**
+     *
+     *  Computes the nth MacGonagall Number M_n, throwing
+     *  an IllegalArgumentException if n is negative.
+     *
+     * Precondition:
+     * An integer n given as input.
+     *
+     * Postcondition:
+     * The nth MacGonagall Number, M_n is returned as output, and
+     * an IllegalArgumentException is thrown if n < 0.
+     *
+     * @param n the MacGonagall Number to be computed
+     * @return the nth MacGonagall Number, M_n
+     * @throws IllegalArgumentException if the input is negative
+     *
+     */
+
     public static int smacG(int n) throws IllegalArgumentException {
+
+        // Assertion: n is an integer such that n >= 0
 
         if(n < 0) {
             throw new IllegalArgumentException();
@@ -162,10 +198,16 @@ public class SMacGonagall {
                 return 2 * smacG(n - 1) - 2 * smacG(n - 3) + smacG(n - 4);
         }
 
+        // Assertion:
+        // 1. n is an integer such that n >= 0
+        // 2. The nth MacGonagall number, M_n is returned as output
+
+
     }
 }
 \end{Verbatim}
 \end{problem}
+
 
 
 
@@ -174,6 +216,12 @@ public class SMacGonagall {
 % --------------------------------------------------------------
 
 \begin{problem}{4}
+Let $T_{smacG}(n)$ be the number of steps included in the execution of the algorithm, $smacG$,
+shown in Figure 1 on input n, for a non-negative integer n — assuming that the uniform
+cost criterion is used to define this and the only steps counted are the numbered steps
+shown in Figure 1.
+\\
+Give a recurrence for $T_{smacG}(n)$.
 \end{problem}
 
 \begin{proof}
@@ -344,14 +392,20 @@ We will use Loop Theorem 1 to prove this loop invariant.
 % --------------------------------------------------------------
 
 \begin{problem}{8}
+ Use this to prove that this algorithm is \textbf{partially correct}.
+\end{problem}
+
+
+\begin{proof}
+
 
 \noindent
-By inspection of the function signature for $fmacG(n)$, this algorithm has no undocumented side effects - that is it does not access or change inputs or global data, and does not create outputs unless documented in the “MacGongall Mystery Computation” problem. \\
+By inspection of the function signature for $fmacG(n)$, this algorithm has no undocumented side effects - that is it does not access or change inputs or global data, and does not create outputs unless documented in the ``MacGongall Mystery Computation" problem. \\
 
 \noindent
-It now suffices to show that if the $fmacG(n)$ is executed when the precondition for the “MacGongall Mystery Computation” is satisfied, then either:
+It now suffices to show that if the $fmacG(n)$ is executed when the precondition for the ``MacGongall Mystery Computation" is satisfied, then either:
 \begin{enumerate}[label=(\alph*)]
-\item The execution of the algorithm halts, with the postcondition for the “MacGongall Mystery Computation” problem being satisfied when this occurs, or alternatively
+\item The execution of the algorithm halts, with the post-condition for the ``MacGongall Mystery Computation" problem being satisfied when this occurs, or alternatively
 \item The algorithm runs forever, whereby the algorithm never halts at all
 \end{enumerate}
 
@@ -375,9 +429,9 @@ If the algorithm does not halt during loop body execution, then the loop invaria
 \end{itemize}
 
 \noindent
-It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$, such that the nth MacGonagal has been returned as output following the return statement at line 18 being executed, whereby condition $(a)$ has been satisfied.
+It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$, such that the nth MacGonagall has been returned as output following the return statement at line 18 being executed, whereby condition $(a)$ has been satisfied.
 
-\end{problem}
+\end{proof}
 
 % --------------------------------------------------------------
 %                         9
@@ -411,7 +465,6 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 % --------------------------------------------------------------
 
 \begin{problem}{10}
-
 Consider the $fmacG(n)$ function being executed such that the precondition for the “MacGonagall Mystery Computation” problem is satisfied. The precondition of this problem assumes that is a non-negative integer before execution of the algorithm begins, that is $n \geq 0$. \\
 
 \noindent
@@ -447,9 +500,20 @@ It can now be proved by ``Loop Theorem \#2'' that the execution of the while loo
 % --------------------------------------------------------------
 
 \begin{problem}{11}
+Using what has been proved so far, complete a proof that the fmacG algorithm correctly
+solves the “MacGonagall Mystery Computation" problem.
+
 \end{problem}
 
 \begin{proof}
+According to the notes from Lecture 3, Claim \#7 ``If an algorithm, for a given computational problem, is
+both partially correct and terminates, whenever it is executed when its problem’s precondition initially satisfied, then this algorithm is correct".
+\\ 
+\\
+The proof from \textbf{Problem 8} proves the partial correctness of the ``MacGongall Mystery Computation" problem and the proof from \textbf{Problem 10} proves the termination of the ``MacGongall Mystery Computation" problem.
+\\
+Since, the algorithm is both partially correct and terminates, whenever it is executed it's precondition satisfied, it will be correct. 
+
 \end{proof}
 
 
@@ -547,6 +611,90 @@ It can now be proved by ``Loop Theorem \#2'' that the execution of the while loo
 \end{itemize}
 
 
+\noindent Suppose, first that the algorithm is executed with input $n=0$. \\
+
+\begin{itemize}
+    \item In this case the test at line 1 is checked and passed. The execution continues and ends with the
+    execution of the return statement at line 2. Thus, the number of steps in this case is 2. 
+\end{itemize}
+
+
+\noindent Next, suppose that the algorithm is executed with input $n=1$\\
+
+\begin{itemize}
+    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
+    and passes and ends with the execution of the return statement at line 4. Thus, the number of
+    steps in this case is 3.
+\end{itemize}
+
+\noindent Next, suppose that the algorithm is executed with input $n=2$\\
+
+\begin{itemize}
+    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
+    and fails, then the test at line 5 is checked and passes and ends with the execution of the 
+    return statement at line 6. Thus, the number of steps in this case is 4.
+\end{itemize}
+
+\noindent Next, suppose that the algorithm is executed with input $n=3$\\
+
+\begin{itemize}
+    \item In this case the test at line 3 is checked and fails, then the test at line 3 is checked 
+    and fails, then the test at line 5 and also fails then the test at line 7 is checked and passes
+    and ends with the execution of the return statement at line 8. Thus, the number of steps in 
+    this case is 5.
+\end{itemize}
+
+\noindent Suppose instead that $n \geq 4$. 
+
+\begin{itemize}
+    \item In this case, the tests at lines 1, 3, 5 and 7 are checked and all fail, so the steps at 
+    continue and execute lines 9-14 before the while loop. Hence, 10 steps are executed before
+    the while loop begins.
+    
+    \item The initial value for the bound function for this loop is $n-3$, so there are at most $n-3$ 
+    executions of the body of the while loop and at most $n-2$ executions of the loop test.
+    
+    \item The loop body consists of two statements, at lines 16-17. There are no loops, tests or method
+    calls, so every execution of the loop body includes two steps: For $4 \leq j \leq n-3$, the cost
+    of the $j^{th}$ execution of the loop body is
+        \begin{flalign*}
+            \hspace*{5mm}T_{body}(j) &= 2 && \text{}
+        \end{flalign*}
+    if there is actually a $j^{th}$ execution of the body of the loop.
+
+    \item Similarly, the loop test consists of a single statement which does not call any other methods - 
+    so, for $1 \leq j \leq n-2$
+        \begin{flalign*}
+            \hspace*{5mm}T_{test}(j) &= 1 && \text{}
+        \end{flalign*}
+    if there is actually a $j^{th}$ execution of the body of the loop.
+
+    \item It now follows that the total number of steps included in this execution of the loop is at most,
+        \begin{flalign*}
+            \hspace*{5mm}\sum_{j=1}^{n-3} T_{body}(j) + \sum_{j=1}^{n-2} T_{test}(j) &= \sum_{j=1}^{n-3} 2 + \sum_{j=1}^{n-2} 1 &&\text{} \\
+            &= 2(n-3)+(n-2) \\
+            &= 2n-6+n-2 \\
+            &= 3n-8 
+        \end{flalign*}
+
+    \item There is only one more statement executed after this, at line 18, and the cost of this is 1.
+    
+    \item Since $10 + (3n-8) + 1 = 3n+3$, it now follows that the number of steps included in an execution
+    of this algorithm on a non-negative integer input $n$ is,
+    \[  
+        \hspace*{-91mm}T_{fmacG}(n) =
+        \begin{cases} 
+        2 & n = 0 \\
+        3 & n = 1 \\
+        4 & n = 2 \\
+        5 & n = 3 \\
+        3n+3 & n \geq 4 
+        \end{cases}
+    \]
+
+        
+\end{itemize}
+
 % --------------------------------------------------------------
 %                         13
 % --------------------------------------------------------------
@@ -555,7 +703,26 @@ It can now be proved by ``Loop Theorem \#2'' that the execution of the while loo
 \begin{Verbatim}[fontsize=\small]
 package cpsc331.assignment1;
 
+/**
+ *
+ * A class for the loop-based computation of the MacGonagall Mystery sequence
+ *
+ * @author Steven Ferguson (30037518)
+ * @author Daniel Contreras (10080311)
+ * @author Guransh Mangat (30061719)
+ * @version 1.0
+ *
+ */
+
 public class FMacGonagall {
+
+    /**
+     *
+     * The main method for this class.
+     *
+     * @param args A single non-negative integer n.
+     *
+     */
 
     public static void main(String[] args) {
 
@@ -566,18 +733,36 @@ public class FMacGonagall {
 
         try {
             int n = Integer.parseInt(args[0]);
-            if (n < 0) {
-                System.out.println("Fiddlesticks! The integer input cannot be negative.");
-            } else {
-                System.out.println(fmacG(n));
-            }
+            System.out.println(fmacG(n));
         } catch (NumberFormatException e) {
             System.out.println("Fiddlesticks! One integer input is required.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Fiddlesticks! The integer input cannot be negative.");
         }
 
     }
 
+    /**
+     *
+     *  Computes the nth MacGonagall Number M_n, throwing
+     *  an IllegalArgumentException if n is negative.
+     *
+     * Precondition:
+     * An integer n given as input.
+     *
+     * Postcondition:
+     * The nth MacGonagall Number, M_n is returned as output, and
+     * an IllegalArgumentException is thrown if n < 0.
+     *
+     * @param n the MacGonagall Number to be computed
+     * @return the nth MacGonagall Number, M_n
+     * @throws IllegalArgumentException if the input is negative
+     *
+     */
+
     public static int fmacG(int n) throws IllegalArgumentException {
+
+        // Assertion: n is an integer such that n >= 0
 
         if (n < 0) {
             throw new IllegalArgumentException();
@@ -593,18 +778,30 @@ public class FMacGonagall {
             case 3:
                 return 8;
             default:
+
                 int[] M = new int[n + 1];
                 M[0] = 1;
                 M[1] = 0;
                 M[2] = 5;
                 M[3] = 8;
                 int i = 4;
+
+                // Loop Invariant:
+                // 1. n is an integer such that n >= 4
+                // 2. i is an integer variable such that 4 <= i <= n
+                // 3. M is an integer array with length n + 1
+                // 4. M_j = fmacG_j for every integer j such that 0 <= j <= i
+                //
+                // Bound Function: n - (i - 1)
+
                 while (i <= n) {
                     M[i] = 2 * M[i - 1] - 2 * M[i - 3] + M[i - 4];
-                    i++;
+                    i += 1;
                 }
+
                 return M[n];
         }
+
     }
 }
 \end{Verbatim}
@@ -616,11 +813,79 @@ public class FMacGonagall {
 % --------------------------------------------------------------
     
 \begin{problem}{14}
+    Suppose that $M$ is a function of the non-negative integers such that,
+    for every integer $n \geq 0$, \\
+
+    \[  
+        \hspace*{-91mm}M(n) =
+        \begin{cases} 
+        1 & i = 0 \\
+        0 & i = 1 \\
+        5 & i = 2 \\
+        8 & i = 3 \\
+        2M_{i-1} - 2M_{i-3} + M_{i-4} & i \geq 4 
+        \end{cases}
+    \] \\
+
+    \noindent Then, the closed form formula is $M(n) = n^2 + (-1)^n$. 
 \end{problem}
 
 \begin{proof}
-\end{proof}
+    This will be established by induction on $n$. The strong form of mathematical
+    induction will be used and the cases $n=0$, $n=1$, $n=2$, and $n=3$ will be considered in
+    the basis. \\
 
+    \noindent \textit{Basis}. If $n=0$, then $M(n) = M(0) = 1$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(0) &= 0^2 + (-1)^0 \\
+        &= 1 
+    \end{flalign*}
+
+    \noindent If $n=1$, then $M(n) = M(1) = 0$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(1) &= 1^2 + (-1)^1 \\
+        &= 0 
+    \end{flalign*}
+    
+    \noindent If $n=2$, then $M(n) = M(2) = 5$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(2) &= 2^2 + (-1)^2 \\
+        &= 5 
+    \end{flalign*}
+
+    \noindent If $n=3$, then $M(n) = M(3) = 8$, and
+    \begin{flalign*}
+        \hspace*{5mm}M(n) &= n^2 + (-1)^n &&\text{}\\
+        M(3) &= 3^2 + (-1)^3 \\
+        &= 8 
+    \end{flalign*}
+
+    \noindent \textit{Inductive Step}. Let $k \geq 4$ be an integer. It is necessary and sufficient
+    to use the following \\
+
+    \underline{Inductive Hypothesis}: $M_{i} = i^2 + (-1)^i$
+    for every integer $i$ such that $0 \leq i \leq k$. \\
+
+    \noindent to prove the following \\
+
+    \underline{Inductive Claim}: $M_{k+1} = \left(k+1\right)^2 + (-1)^{k+1}$ \\
+
+    \noindent Now, 
+    \begin{flalign*}
+        \hspace*{5mm}M_{k+1} &= 2M_k - 2M_{k-2} + M_{k-3} &&\text{}\\
+        &= 2(k^2+(-1)^k) - 2((k-2)^2+(-1)^{K-2}) + (k-3)^2 + (-1)^{k-3} &&\text{(from IH)} \\
+        &= 2k^2 + 2(-1)^k - 2(k-2)^2 - 2(-1)^{k-2} + (k-3)^2 + (-1)^{k-3} \\
+        &= \left(k^2 + 2k + 1\right) + (-1)^k[2-2(-1)^{-2} + (-1)^{-3}] \\
+        &= (k+1)^2 + (-1)^{k+1}
+    \end{flalign*}
+
+    \noindent thus establishing the inductive claim, as required. Thefore, by principle of
+    induction, $M(n) = n^2 + (-1)^n$ for all non-negative integers $n$.
+
+\end{proof}
  
 % --------------------------------------------------------------
 %     You don't have to mess with anything below this line.

@@ -57,7 +57,7 @@
 % --------------------------------------------------------------
 
 \begin{problem}{1}
-    Suppose that the function $f(n)=n$ is a bound function.
+    Suppose that the function $f(n)=n$ is a bound function. (\textbf{References}: Tutorial Exercise 3)
 \end{problem}
 
 \begin{proof}
@@ -67,9 +67,7 @@
     $n \geq 0$. Thus it is only possible that $ f(n) = n \leq 0$ when n = 0. In that case, the test 
     at \textit{line 1} passes, the execution continues at \textit{line 1} and the execution ends 
     without having to call the recursive function repeatedly. \newline \newline Hence, the function 
-    $f(n) = n$ is a bound function. 
-    \\ \\ 
-    \textbf{Reference: }Tutorial Exercise 3
+    $f(n) = n$ is a bound function.
 \end{proof}
 
 % --------------------------------------------------------------
@@ -77,7 +75,7 @@
 % --------------------------------------------------------------
 
 \begin{problem}{2}
-    Prove that the smacG algorithm correctly solves the ``MacGonagall Mystery Computation" problem.
+    Prove that the smacG algorithm correctly solves the ``MacGonagall Mystery Computation" problem. (\textbf{References}: Lecture Notes 2)
 \end{problem}
 
 \begin{proof}
@@ -112,10 +110,6 @@
     
     \noindent as required to establish the \textbf{inductive claim.} \\ \\
     This results now follows by induction on n.
-    
-    \\
-    \\
-    \textbf{Reference: }Lecture Notes 2
 \end{proof}
 
 
@@ -213,9 +207,6 @@ public class SMacGonagall {
 }
 \end{Verbatim}
 \end{problem}
-
-
-
 
 % --------------------------------------------------------------
 %                         4
@@ -356,20 +347,15 @@ $T_{smacG}\left(n\right) \geq \left(\frac{3}{2}\right)^{n}$ for all non-negative
 
 \begin{problem}{6}
 State a loop invariant for the while loop at lines $15 \-- 17$
-of this algorithm
+of this algorithm. (\textbf{References}: Lecture 3 and Tutorial Exercise 4)
 \end{problem}
 
-\begin{proof}
 \begin{enumerate}
-        \item \textit{n} is an integer input such that $n \geq 4$
-        \item \textit{i} is an integer variable such that $4 \leq i \leq n$
-        \item \textit{M} is an integer array with length $n+1$
-        \item $M_{j} = fmacG_{j}$ for every integer j such that $ 0 \leq j \leq i$
-   \end{enumerate}
-      \vspace{5mm}
-   \textbf{Reference: } Lecture 3 and Tutorial Exercise 4
-\end{proof}
-
+    \item \textit{n} is an integer input such that $n \geq 4$
+    \item \textit{i} is an integer variable such that $4 \leq i \leq n$
+    \item \textit{M} is an integer array with length $n+1$
+    \item $M_{j} = fmacG_{j}$ for every integer j such that $ 0 \leq j \leq i$
+\end{enumerate}
 
 % --------------------------------------------------------------
 %                         7
@@ -381,7 +367,7 @@ loop in this algorithm.
 \end{problem}
 
 \begin{proof}
-We will use Loop Theorem 1 to prove this loop invariant.
+We will use Loop Theorem 1 to prove this loop invariant. (\textbf{References}: Lecture 3 and Tutorial Exercise 4)
 \begin{enumerate}
     \item The loop test at \textit{line 15} has no side effects. 
     \item Consider the execution of the algorithm with the precondition for the ``MacGonagall Mystery Computation" satisfied. There is nothing to be proved if the while loop at \textit{line 15} is never reached, so if tests at \textit{line 1, 3, 5, 7} fail, then \textit{lines 9-15} are executed. By the inspection of code, we can say that the loop is not executed more than once. So it suffices us to consider the first execution of the loop. 
@@ -394,9 +380,7 @@ We will use Loop Theorem 1 to prove this loop invariant.
    \end{enumerate}
    \vspace{5mm}
    It follows from ``Loop Theorem \# 1" that this is a loop invariant for this loop, as claimed.
-   \\
-   \\
-   \textbf{Reference: } Lecture 3 and Tutorial Exercise 4
+  
 \end{proof}
 
 
@@ -452,24 +436,27 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 
 \begin{problem}{9}
     The function $f\left(n,i\right) = n - (i - 1)$ is a bound function for the while
-    loop in this algorithm. 
+    loop in this algorithm. (\textbf{References}: L05 and T05)
 \end{problem}
 
-\begin{proof} Consider the above function $f$. \\
+\begin{proof} Consider the above function $f$. We can show that $f$ is a bound function by first
+    inspecting to see if the function is an integer-valued total function of the inputs, variables
+    and global data; as specified by a bound function's definition for a while loop. Then, since
+    $n$ is an integer input and $i$ is an integer variabled, we can establish that $f$ is indeed 
+    an integer-valued function. \\
 
-    \noindent Since $n$ is an integer input and $i$ is an integer variable, defined and 
-    initialized at step 14, this is certainly an integer-valued total function of
-    some of the inputs, variables and global data in the $fmacG$ algorithm. \\
+    \noindent Now, we must also show that the bound function satisfies condition $a$ of its 
+    definition. That is, when the body of the while loop is executed, we note that the value of
+    $i$ is increased by one (at step 17) and the value of $n$ is not changed. Thus, the value of
+    $f$ is decreased by at least one. \\
 
-    \noindent When the body of the while loop is executed, the value of $i$ is increased
-    by one (at step 17) and the value of $n$ is not changed. Hence, the value of $f$ is
-    decreased by at least one. \\
+    \noindent Lastly, we must show that the bound function also satisifies condition $b$ of its 
+    definition. Then, we note that if the value of $f$ is less than zero, then $n-(i-1) < 0$, so that 
+    $i > n$ and the loop test (at line 15) fails, causing the execution of the loop to halt. \\
 
-    \noindent If the value of $f$ is less than zero then $n-(i-1) < 0$, so that $i > n$ and the loop
-    test (at line 15) fails, causing the execution of the loop to halt. \\
+    \noindent It then follows by definition of a bound function for a while loop, that $f$ is indeed
+    a bound function for the while loop in the $f_{macG}$ algorithm, as claimed.
 
-    \noindent It then follows by definition of a bound function for a while loop that $f$ is a bound 
-    function for the while loop in the $fmacG$ algorithm, as claimed.
 \end{proof}
 
 
@@ -479,7 +466,7 @@ It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$,
 
 \begin{problem}{10}
 Suppose the $fmacG(n)$ algorithm is executed so that the precondition for the “MacGonagall Mystery Computation” problem is satisfied. The precondition of this problem assumes that is a non-negative integer before execution of the algorithm begins (i.e. $n \geq 0$.) \\
-
+(\textbf{References}: Lecture 3 and Tutorial Exercise 4)
 \noindent
 When n = 0, the test at line 1 passes, and the algorithm's execution halts after reaching line 2. \\
 
@@ -503,9 +490,6 @@ Otherwise, if $n \geq 4$, the test at lines 1, 3, 5, and 7 fail, and the steps a
 
 \noindent
 It can now be proved using ``Loop Theorem \#2'' that the execution of the while loop halts. The execution of this algorithm halts after the execution of the return statement at line 18, which establishes the claim as required. It now follows in question $(11)$ that this algorithm is provably correct.
-
-\noindent
-\textbf{Reference: }Lecture 3 and Tutorial Exercise 4
 
 \end{problem}
 
@@ -531,85 +515,67 @@ Since, the algorithm is both partially correct and terminates, whenever it is ex
 
 \end{proof}
 
-
 % --------------------------------------------------------------
 %                         12
 % --------------------------------------------------------------
 
 \begin{problem}{12}
     An upper bound function for $T_{fmacG}(n)$ in its closed form can be found by the following 
-    methods. 
+    methods. (\textbf{References}: L05 and T06)
 \end{problem}
 
-\noindent Suppose, first that the algorithm is executed with input $n=0$. \\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and passed. The execution continues and ends with the
-    execution of the return statement at line 2. Thus, the number of steps in this case is 2. 
-\end{itemize}
-
-
-\noindent Next, suppose that the algorithm is executed with input $n=1$\\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
-    and passes and ends with the execution of the return statement at line 4. Thus, the number of
-    steps in this case is 3.
-\end{itemize}
-
-\noindent Next, suppose that the algorithm is executed with input $n=2$\\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
-    and fails, then the test at line 5 is checked and passes and ends with the execution of the 
-    return statement at line 6. Thus, the number of steps in this case is 4.
-\end{itemize}
-
-\noindent Next, suppose that the algorithm is executed with input $n=3$\\
-
-\begin{itemize}
-    \item In this case the test at line 3 is checked and fails, then the test at line 3 is checked 
-    and fails, then the test at line 5 and also fails then the test at line 7 is checked and passes
-    and ends with the execution of the return statement at line 8. Thus, the number of steps in 
-    this case is 5.
-\end{itemize}
-
-\noindent Suppose instead that $n \geq 4$. 
-
-\begin{itemize}
-    \item In this case, the tests at lines 1, 3, 5 and 7 are checked and all fail, so the steps at 
-    continue and execute lines 9-14 before the while loop. Hence, 10 steps are executed before
-    the while loop begins.
+\begin{proof} We will begin by considering the steps executed before the while loop. Namely, in the cases
+    when $n=0$, $n=1$, $n=2$, and $n=3$. \\
     
-    \item The initial value for the bound function for this loop is $n-3$, so there are at most $n-3$ 
-    executions of the body of the while loop and at most $n-2$ executions of the loop test.
+    \noindent If the algorithm is executed with input $n=0$, then the test at line 1 is checked and passes. 
+    The execution then continues and ends with the return statement at line 2. Thus, the number of steps
+    in this case is 2. \\
+
+    \noindent Next, suppose that the algorithm is executed with input $n=1$, then the test at line 1 is checked 
+    and fails, then the test at line 3 is checked and passes and ends with the execution of the return statement 
+    at line 4. Thus, the number of steps in this case is 3. \\
+
+    \noindent Next, suppose that the algorithm is executed with input $n=2$, then the tests at lines 1 and 3
+    are checked an all fail. The execution then continues to line 5 where the condition is checked and passes 
+    and ends with the execution of the return statement at line 6. Hence, 4 steps are are executed in this case. \\
+
+    \noindent Next, suppose that the algorithm is executed with input $n=3$, then the tests at lines 1, 3, and 5
+    are checked an all fail. The execution then continues to line 7 where the condition is checked and passes 
+    and ends with the execution of the return statement at line 8. Hence, 5 steps are are executed in this case. \\
+
+    \noindent Suppose instead that $n \geq 4$. The tests at lines 1, 3, 5 and 7 are checked and all fail. The algorithm then continues
+    and executes lines 9-14 before the while loop. Hence, 10 steps are executed before
+    the while loop begins. \\
     
-    \item The loop body consists of two statements, at lines 16-17. There are no loops, tests or method
+    \noindent Given the while loops bound function, the initial value for this loop is $n-3$, that is, there
+    are at most $n-3$ executions of the body of the while loop and at most $n-2$ executions of the loop test. \\
+    
+    \noindent The loop body consists of two statements, at lines 16-17. There are no loops, tests or method
     calls, so every execution of the loop body includes two steps: For $4 \leq j \leq n-3$, the cost
     of the $j^{th}$ execution of the loop body is
         \begin{flalign*}
             \hspace*{5mm}T_{body}(j) &= 2 && \text{}
         \end{flalign*}
-    if there is actually a $j^{th}$ execution of the body of the loop.
+    if there is actually a $j^{th}$ execution of the body of the loop. \\
 
-    \item Similarly, the loop test consists of a single statement which does not call any other methods - 
+    \noindent Similarly, the loop test consists of a single statement which does not call any other methods - 
     so, for $1 \leq j \leq n-2$
         \begin{flalign*}
             \hspace*{5mm}T_{test}(j) &= 1 && \text{}
         \end{flalign*}
-    if there is actually a $j^{th}$ execution of the body of the loop.
+    if there is actually a $j^{th}$ execution of the body of the loop. \\
 
-    \item It now follows that the total number of steps included in this execution of the loop is at most,
-        \begin{flalign*}
-            \hspace*{5mm}\sum_{j=1}^{n-3} T_{body}(j) + \sum_{j=1}^{n-2} T_{test}(j) &= \sum_{j=1}^{n-3} 2 + \sum_{j=1}^{n-2} 1 &&\text{} \\
-            &= 2(n-3)+(n-2) \\
-            &= 2n-6+n-2 \\
-            &= 3n-8 
-        \end{flalign*}
+    \noindent It now follows that the total number of steps included in this execution of the loop is at most,
+    \begin{flalign*}
+        \hspace*{5mm}\sum_{j=1}^{n-3} T_{body}(j) + \sum_{j=1}^{n-2} T_{test}(j) &= \sum_{j=1}^{n-3} 2 + \sum_{j=1}^{n-2} 1 &&\text{} \\
+        &= 2(n-3)+(n-2) \\
+        &= 2n-6+n-2 \\
+        &= 3n-8
+    \end{flalign*}
 
-    \item There is only one more statement executed after this, at line 18, and the cost of this is 1.
+    \noindent There is only one more statement executed after this, at line 18, and the cost of this is 1. \\
     
-    \item Since $10 + (3n-8) + 1 = 3n+3$, it now follows that the number of steps included in an execution
+    \noindent Since $10 + (3n-8) + 1 = 3n+3$, it now follows that the number of steps included in an execution
     of this algorithm on a non-negative integer input $n$ is,
     \[  
         \hspace*{-91mm}T_{fmacG}(n) =
@@ -621,94 +587,9 @@ Since, the algorithm is both partially correct and terminates, whenever it is ex
         3n+3 & n \geq 4 
         \end{cases}
     \]
+            
+\end{proof}
 
-        
-\end{itemize}
-
-
-\noindent Suppose, first that the algorithm is executed with input $n=0$. \\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and passed. The execution continues and ends with the
-    execution of the return statement at line 2. Thus, the number of steps in this case is 2. 
-\end{itemize}
-
-
-\noindent Next, suppose that the algorithm is executed with input $n=1$\\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
-    and passes and ends with the execution of the return statement at line 4. Thus, the number of
-    steps in this case is 3.
-\end{itemize}
-
-\noindent Next, suppose that the algorithm is executed with input $n=2$\\
-
-\begin{itemize}
-    \item In this case the test at line 1 is checked and fails, then the test at line 3 is checked 
-    and fails, then the test at line 5 is checked and passes and ends with the execution of the 
-    return statement at line 6. Thus, the number of steps in this case is 4.
-\end{itemize}
-
-\noindent Next, suppose that the algorithm is executed with input $n=3$\\
-
-\begin{itemize}
-    \item In this case the test at line 3 is checked and fails, then the test at line 3 is checked 
-    and fails, then the test at line 5 and also fails then the test at line 7 is checked and passes
-    and ends with the execution of the return statement at line 8. Thus, the number of steps in 
-    this case is 5.
-\end{itemize}
-
-\noindent Suppose instead that $n \geq 4$. 
-
-\begin{itemize}
-    \item In this case, the tests at lines 1, 3, 5 and 7 are checked and all fail, so the steps at 
-    continue and execute lines 9-14 before the while loop. Hence, 10 steps are executed before
-    the while loop begins.
-    
-    \item The initial value for the bound function for this loop is $n-3$, so there are at most $n-3$ 
-    executions of the body of the while loop and at most $n-2$ executions of the loop test.
-    
-    \item The loop body consists of two statements, at lines 16-17. There are no loops, tests or method
-    calls, so every execution of the loop body includes two steps: For $4 \leq j \leq n-3$, the cost
-    of the $j^{th}$ execution of the loop body is
-        \begin{flalign*}
-            \hspace*{5mm}T_{body}(j) &= 2 && \text{}
-        \end{flalign*}
-    if there is actually a $j^{th}$ execution of the body of the loop.
-
-    \item Similarly, the loop test consists of a single statement which does not call any other methods - 
-    so, for $1 \leq j \leq n-2$
-        \begin{flalign*}
-            \hspace*{5mm}T_{test}(j) &= 1 && \text{}
-        \end{flalign*}
-    if there is actually a $j^{th}$ execution of the body of the loop.
-
-    \item It now follows that the total number of steps included in this execution of the loop is at most,
-        \begin{flalign*}
-            \hspace*{5mm}\sum_{j=1}^{n-3} T_{body}(j) + \sum_{j=1}^{n-2} T_{test}(j) &= \sum_{j=1}^{n-3} 2 + \sum_{j=1}^{n-2} 1 &&\text{} \\
-            &= 2(n-3)+(n-2) \\
-            &= 2n-6+n-2 \\
-            &= 3n-8 
-        \end{flalign*}
-
-    \item There is only one more statement executed after this, at line 18, and the cost of this is 1.
-    
-    \item Since $10 + (3n-8) + 1 = 3n+3$, it now follows that the number of steps included in an execution
-    of this algorithm on a non-negative integer input $n$ is,
-    \[  
-        \hspace*{-91mm}T_{fmacG}(n) =
-        \begin{cases} 
-        2 & n = 0 \\
-        3 & n = 1 \\
-        4 & n = 2 \\
-        5 & n = 3 \\
-        3n+3 & n \geq 4 
-        \end{cases}
-    \]
-
-        
-\end{itemize}
 
 % --------------------------------------------------------------
 %                         13

@@ -68,6 +68,8 @@
     at \textit{line 1} passes, the execution continues at \textit{line 1} and the execution ends 
     without having to call the recursive function repeatedly. \newline \newline Hence, the function 
     $f(n) = n$ is a bound function. 
+    \\ \\ 
+    \textbf{Reference: }Tutorial Exercise 3
 \end{proof}
 
 % --------------------------------------------------------------
@@ -110,6 +112,10 @@
     
     \noindent as required to establish the \textbf{inductive claim.} \\ \\
     This results now follows by induction on n.
+    
+    \\
+    \\
+    \textbf{Reference: }Lecture Notes 2
 \end{proof}
 
 
@@ -360,6 +366,8 @@ of this algorithm
         \item \textit{M} is an integer array with length $n+1$
         \item $M_{j} = fmacG_{j}$ for every integer j such that $ 0 \leq j \leq i$
    \end{enumerate}
+      \vspace{5mm}
+   \textbf{Reference: } Lecture 3 and Tutorial Exercise 4
 \end{proof}
 
 
@@ -380,10 +388,15 @@ We will use Loop Theorem 1 to prove this loop invariant.
     \\
     The precondition for the ``MacGonagall Mystery Computation" states that $n$ needs to be a non-negative integer i.e. $n \geq 0$ when the execution of the algorithm begins and by inspection, the value of $n$ never changes. Furthermore, $n \neq 1,2,3$ as tests at \textit{line 1, 3, 5 and 7} pass and the loop is never reached. Thus, $n \geq 4$ which establishes part 1 of the loop invariant when the execution of loop begins. One can see by the inspection of the code, $i$ is an integer variable with a value of $4$ when the execution of the loop begins, since $n \geq 4$, this establishes part 2 of the loop invariant when the execution of the loop begins. Since $M$ is an \textit{integer-array} variable whose length is set to be $n+1$. Finally, since \emph{lines 10, 11, 12, and 13} have been executed (and M is not changed at step 14), $M[0] = fmacG_{0}, M[1] = fmacG_{1}, M[2] = fmacG_{2}, and M[3] = fmacG_{3}$. Since $i=4, M[j] = fmacG_{j}$ for every integer $j$ such that $0 \leq i \leq j$. Thus, the fourth part of the assertion before the execution of the loop body, as required for the proof of the claim.
     
-    \item Consider an execution of the body of this loop that begins with the proposed "loop invariant" satisfied. It follows by \emph{part 1} of the loop invariant that $n$ is initially and integer variable such that $n \geq 4$ and since, the value of $n$ is not changed during the executions of \emph{line 16, 17}, this is also true when the execution of this loop ends. It follows by \emph{part 2} of the loop invariant that $i$ is an integer variable such that $4 \leq i \leq n$. Since, the test at \emph{line 15} was checked and passed, $i < n$ so that $4 \leq i \leq n-1$ at this point.
-    When the value of n is never changed, the value of $i$ is increased by one during the execution of \emph{line 17}, so $5 \leq i \leq n$ at the end of the execution of this loop body and \emph{part 2} of the loop invariant is satisfied at the end of this execution of the loop body as well.
+    \item Consider an execution of the body of this loop that begins with the proposed \emph{loop invariant} satisfied. It follows by \emph{part 1} of the loop invariant that $n$ is initially and integer variable such that $n \geq 4$ and since, the value of $n$ is not changed during the executions of \emph{line 16, 17}, this is also true when the execution of this loop ends. It follows by \emph{part 2} of the loop invariant that $i$ is an integer variable such that $4 \leq i \leq n$. Since, the test at \emph{line 15} was checked and passed, $i < n$ so that $4 \leq i \leq n-1$ at this point.
+    When the value of n is never changed, the value of $i$ is increased by one during the execution of \emph{line 17}, so $5 \leq i \leq n$ at the end of the execution of this loop body and \emph{part 2} of the loop invariant is satisfied at the end of this execution of the loop body as well. It follows \emph{part 3} that $M$ is an integer valued array with the length $n+1$ at the beginning of the execution of this loop. Since, $n$ is not being changed during the execution loop, the value of $M$ remains unchanged once the loop has been executed re-establishing \emph{part 3}.From \emph{part 4}, since, $i \geq 4$ and $i + 1 \geq 5$, $M[i] = M[i+1]$ immediately after the execution of \emph{line 16}, which means $M[i+1] = 2 \times M[i] - 2 \times M[i - 2] + M[i - 3]$. However, since $i$ is being incremented at \emph{line 17}, $M[i] = 2 \times M[i-1] - 2\times M[i-3] + M[i-4]$. Since, $M_{j} = fmacG_{j}$ and $ 0 \leq j \leq i$, \emph{part 4} of this loop invariant is satisfies again at the end of the execution as required.
     
    \end{enumerate}
+   \vspace{5mm}
+   It follows from ``Loop Theorem \# 1" that this is a loop invariant for this loop, as claimed.
+   \\
+   \\
+   \textbf{Reference: } Lecture 3 and Tutorial Exercise 4
 \end{proof}
 
 

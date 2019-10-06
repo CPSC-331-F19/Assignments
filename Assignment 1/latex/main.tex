@@ -389,7 +389,7 @@ We will use Loop Theorem 1 to prove this loop invariant. (\textbf{References}: L
 % --------------------------------------------------------------
 
 \begin{problem}{8}
- Use this to prove that this algorithm is \textbf{partially correct}.
+ Use this to prove that this algorithm is \textbf{partially correct}.(\textbf{References}: Lecture 3 and Tutorial Exercise 4)
 \end{problem}
 
 
@@ -397,36 +397,36 @@ We will use Loop Theorem 1 to prove this loop invariant. (\textbf{References}: L
 
 
 \noindent
-By inspection of the function signature for $fmacG(n)$, this algorithm has no undocumented side effects - that is it does not access or change inputs or global data, and does not create outputs unless documented in the ``MacGongall Mystery Computation" problem. \\
+When observing the function signature for $fmacG(n)$, this algorithm has no undocumented side effects, since it is not accessing or modifying inputs or global data, and does not create outputs unless stated otherwise in the ``MacGongall Mystery Computation" problem. \\
 
 \noindent
-It now suffices to show that if the $fmacG(n)$ is executed when the precondition for the ``MacGongall Mystery Computation" is satisfied, then either:
+It is now sufficient to prove that if the $fmacG(n)$ is executed when the precondition for the ``MacGongall Mystery Computation" is satisfied, then either:
 \begin{enumerate}[label=(\alph*)]
-\item The execution of the algorithm halts, with the post-condition for the ``MacGongall Mystery Computation" problem being satisfied when this occurs, or alternatively
-\item The algorithm runs forever, whereby the algorithm never halts at all
+\item The algorithm's execution terminates, with the post-condition for the ``MacGongall Mystery Computation" problem being satisfied, or alternatively
+\item The algorithm runs forever, whereby the algorithm never terminates at all
 \end{enumerate}
 
 \noindent
-Now, consider an execution of this algorithm where the precondition of this problem is initially satisfied. That is, such that $n$ is an integer input where $n \geq 0$.
+Now, consider an execution of this algorithm where the precondition of this problem is initially satisfied. That is, $n$ is an integer input where $n \geq 0$.
 
 \begin{itemize}
 
-\item Suppose that $n = 0$. In this case, the test at line 1 passes, and the execution of the algorithm halts after reaching line 2, where $M_0 = M_n = 1$ is returned, as required to satisfy our condition established in $(a)$.
+\item Suppose that $n = 0$. Then the test at line 1 passes, and the algorithm's execution halts after reaching line 2, where $M_0 = M_n = 1$ is returned as required to satisfy our condition established in $(a)$.
 
-\item Suppose that $n = 1$. In this case, the test at line 1 fails, and the execution of the algorithm proceeds and passes the test at line 3, where the execution of the algorithm halts after the execution of line 4, and $M_1 = M_n = 0$ is returned, as required to satisfy our condition established in $(a)$.
+\item Suppose that $n = 1$. Then the test at line 1 fails, and the algorithm's execution proceeds and passes the test at line 3, where the algorithm's execution halts after reaching line 4, and $M_1 = M_n = 0$ is returned, as required to satisfy our condition established in $(a)$.
 
-\item Suppose that $n = 2$. In this case, the test at line 1 and 3 fail, and the execution of the algorithm proceeds and passes the test at line 5, where the execution of the algorithm halts after the execution of line 6, and $M_2 = M_n = 5$ is returned, as required to satisfy our condition established in $(a)$.
+\item Suppose that $n = 2$. Then the test at line 1 and 3 fail, and the algorithm's execution proceeds and passes the test at line 5, where the algorithm's execution halts after reaching line 6, and $M_2 = M_n = 5$ is returned, as required to satisfy our condition established in $(a)$.
 
-\item Suppose that $n = 3$. In this case, the test at line 1, 3, and 5 fail, and the execution of the algorithm proceeds and passes the test at line 7, where the execution of the algorithm halts after the execution of line 8, and $M_3 = M_n = 8$ is returned, as required to satisfy our condition established in $(a)$.
+\item Suppose that $n = 3$. Then the test at line 1, 3, and 5 fail, and the algorithm's execution proceeds and passes the test at line 7, where the algorithm's execution halts after reaching line 8, and $M_3 = M_n = 8$ is returned, as required to satisfy our condition established in $(a)$.
 
-\item The only other case is when $n \geq 4$, such that the tests at lines 1, 3, 5, and 7 fail, and the steps at $9 \rightarrow 14$ are executed, which proceeds to the while loop that is later executed. Should the while loop run indefinitely, then the execution of the algorithm never halts, and the condition established in $(b)$ is satisfied. \\
+\item The last and final case is when $n \geq 4$, such that the tests at lines 1, 3, 5, and 7 fail, and steps at $9 \rightarrow 14$ are executed, proceeding to the while loop-body that is later executed. Should the while loop run indefinitely, then the algorithm's execution never terminates, and the condition established in $(b)$ is satisfied. \\
 
-If the algorithm does not halt during loop body execution, then the loop invariant is satisfied at this point of execution, such that $n$ is an input integer where $n \geq 4$, and $i$ is an integer variable such that $4 \leq i \leq n$ as established in $(1)$ and $(3)$ of the loop invariant. Since the algorithm halts, then the test at line 15 has been evaluated and thus failed, this means $i \leq n$ as well, that is $i = n$ after the execution of the loop body.
+If the algorithm does not halt during loop body execution, then the loop invariant is satisfied at this point of execution, such that $n$ is an input integer where $n \geq 4$, and $i$ is an integer variable such that $4 \leq i \leq n$ as established in $(1)$ and $(3)$ of the loop invariant. Since the algorithm terminates, and the test at line 15 has been evaluated and failed, this means $i \leq n$ as well, such that $i = n$ after the execution of the loop body.
 
 \end{itemize}
 
 \noindent
-It can now be said for part 4 of the loop invariant that $M[j] = fmacG_j = M_n$, such that the nth MacGonagall has been returned as output following the return statement at line 18 being executed, whereby condition $(a)$ has been satisfied.
+Thus, for part 4 of the loop invariant, $M[j] = fmacG_j = M_n$ such that the nth MacGonagall has been returned as output following the return statement at line 18 being executed, where condition $(a)$ has been satisfied.
 
 \end{proof}
 

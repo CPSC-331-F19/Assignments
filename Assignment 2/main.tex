@@ -16,7 +16,7 @@
 \newcommand{\rbr}{\rbrace}
 \renewcommand{\qed}{\hfill$\blacksquare$}
 \let\newproof\proof
-% \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{new``proof}\end{addmargin}\qed}
  
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
@@ -91,7 +91,28 @@ Once ``Treap Restoration after Insertion" algorithm is executed, the priorities 
 %                         Problem 3
 %------------------------------------------------------------------------
 \begin{problem}{3}
-
+\begin{verbatim}
+    private void restoreAfterInsertion(TreapNode x) {
+        if (x.priority.compareTo(x.parent.priority()) == 1) {
+            if (x.parent.left() != null) {
+                if (x.parent.left().equals(x)) {
+                    rightRotate(x.parent);
+                } else {
+                    leftRotate(x.parent);
+                }
+            } else if (x.parent.right() != null) {
+                if (x.parent.right().equals(x)) {
+                    leftRotate(x.parent);
+                } else {
+                    rightRotate(x.parent);
+                }
+            }
+        }
+        if (x.parent() != null && x.priority.compareTo(x.parent.priority()) == 1) {
+            restoreAfterInsertion(x);
+        }
+    }
+\end{verbatim}
 \end{problem}
 
 \begin{proof}

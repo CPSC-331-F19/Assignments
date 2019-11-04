@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\pagestyle{fancy}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\lbr}{\lbrace}
+\newcommand{\rbr}{\rbrace}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+% \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{new``proof}\end{addmargin}\qed}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\title{Assignment 2 \\ CPSC 331} % Title and subtitle
+\author{Guransh Mangat, 30061719 \\ Daniel Contreras, 10080311 \\ Steven Ferguson, 30037518\\}
+\date{}
+
+
+\lhead{CPSC 331}
+\chead{Assignment 2}
+\rhead{October 2019}
+ 
+\maketitle{}
+
+\newpage
+
+% --------------------------------------------------------------
+%                         1
+% --------------------------------------------------------------
+\begin{problem}{1}
+Describe how an algorithm for the ``Treap Restoration after Insertion" problem could be
+used, along with an algorithm for insertion into a binary search tree, to obtain an algorithm for the ``Insertion into This Treap" problem. Briefly explain why the algorithm you
+have described would be correct
+\end{problem}
+
+\begin{proof}
+The ``insertion into a binary search tree'' can be used along with ``Insertion into Subtree" algorithm. Whenever ``insertion into subtree"" algorithm is called with the preconditions satisfied, a node is included into the subtree with root \emph{x}- either by replacing the value at the node storing $k$, or by adding a new node if no such node existed.The ``insertion into the subtree" algorithm ensures that each element stored in a node in the left subtree of the subtree with root x is \emph{less than} the element stored at x, and each element stored in a node in the
+right subtree of the subtree with root x is \emph{greater than} the element stored at x. 
+\\ \\
+Once ``insertion into binary search tree" algorithm is executed, the elements \emph{E} int the Treap $T$ are stored satisfying property $(b)$ of the definition of Treaps.
+\\ \\
+We then continue with executing ``Treap Restoration after Insertion" algorithm with the preconditions satisfied.This ensured that he priority associated with each element of $E$, that is stored in Treap $T$, has not been changed. That is, if an element $e \in E$ and priority $p \in P$ were stored in the same node of $T$ before this computation began, then $e$ and $p$ are also both stored in the same node of T after the computation ends.
+\\ \\
+Once ``Treap Restoration after Insertion" algorithm is executed, the priorities $P$ are stored in the Treap $T$ satisfying property $(c)$ of the definition of the Treaps.
+\end{proof}
+
+
+
+%------------------------------------------------------------------------
+%                         Problem 2
+%------------------------------------------------------------------------
+\begin{problem}{2}
+
+\end{problem}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+%------------------------------------------------------------------------
+%                         Problem 3
+%------------------------------------------------------------------------
+\begin{problem}{3}
+$\newline$
+\begin{verbatim}
+    private void restoreAfterInsertion(TreapNode x) {
+        if (x.priority.compareTo(x.parent.priority()) == 1) {
+            if (x.parent.left() != null) {
+                if (x.parent.left().equals(x)) {
+                    rightRotate(x.parent);
+                } else {
+                    leftRotate(x.parent);
+                }
+            } else if (x.parent.right() != null) {
+                if (x.parent.right().equals(x)) {
+                    leftRotate(x.parent);
+                } else {
+                    rightRotate(x.parent);
+                }
+            }
+        }
+        if (x.parent() != null && x.priority.compareTo(x.parent.priority()) == 1) {
+            restoreAfterInsertion(x);
+        }
+    }
+\end{verbatim}
+\end{problem}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+%------------------------------------------------------------------------
+%                         Problem 4
+%------------------------------------------------------------------------
+\begin{problem}{4}
+
+\end{problem}
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}

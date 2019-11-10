@@ -1,0 +1,57 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{private} \PYG{k+kt}{void} \PYG{n+nf}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{TreapNode} \PYG{n}{x}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+        \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{c+c1}{// case 1: leaf node or root}
+                \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{root} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+                \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{TreapNode} \PYG{n}{parent} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent}\PYG{o}{;}
+                    \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{)} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                        \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+                    \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                        \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+                    \PYG{o}{\PYGZcb{}}
+                \PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                \PYG{c+c1}{// case 2: left child is null but right child is not}
+                \PYG{n}{TreapNode} \PYG{n}{rightChild} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right}\PYG{o}{;}
+                \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{rightChild}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+                    \PYG{n}{root} \PYG{o}{=} \PYG{n}{rightChild}\PYG{o}{;}
+                \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{TreapNode} \PYG{n}{parent} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent}\PYG{o}{;}
+                    \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{)} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                        \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{=} \PYG{n}{rightChild}\PYG{o}{;}
+                    \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                        \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{=} \PYG{n}{rightChild}\PYG{o}{;}
+                    \PYG{o}{\PYGZcb{}}
+                    \PYG{n}{rightChild}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{=} \PYG{n}{parent}\PYG{o}{;}
+                \PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+            \PYG{c+c1}{// case 3: left child is not null but right child is}
+            \PYG{n}{TreapNode} \PYG{n}{leftChild} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left}\PYG{o}{;}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{leftChild}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+                \PYG{n}{root} \PYG{o}{=} \PYG{n}{leftChild}\PYG{o}{;}
+            \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                \PYG{n}{TreapNode} \PYG{n}{parent} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{parent}\PYG{o}{;}
+                \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{element}\PYG{o}{)} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{=} \PYG{n}{leftChild}\PYG{o}{;}
+                \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                    \PYG{n}{parent}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{=} \PYG{n}{leftChild}\PYG{o}{;}
+                \PYG{o}{\PYGZcb{}}
+                \PYG{n}{leftChild}\PYG{o}{.}\PYG{n+na}{parent} \PYG{o}{=} \PYG{n}{parent}\PYG{o}{;}
+            \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+            \PYG{c+c1}{// case 4: Neither the left nor the right of x is null (need to rotate)}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{rightRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{o}{\PYGZob{}}
+                \PYG{n}{leftRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}}
+            \PYG{n}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+        \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

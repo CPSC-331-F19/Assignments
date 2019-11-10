@@ -33,6 +33,8 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
 
+\usepackage{minted}
+
 \begin{document}
 
 % --------------------------------------------------------------
@@ -90,19 +92,20 @@
 \begin{problem}{3}
 \end{problem}
 
-\begin{verbatim}
-    private void restoreAfterInsertion(TreapNode x) {
-        if (x.priority.compareTo(x.parent.priority()) == 1) {
-            if (x.parent.left() != null && x.parent.left.equals(x)) {
-                rightRotate(x.parent);
-            } else {
-                leftRotate(x.parent);
-            }
-            if (x.parent() != null) {
-                restoreAfterInsertion(x);
-            }
+\begin{minted}[baselinestretch=1.2,fontsize=\footnotesize,linenos]{java}
+private void restoreAfterInsertion(TreapNode x) {
+    if (x.priority.compareTo(x.parent.priority()) == 1) {
+        if (x.parent.left() != null && x.parent.left.equals(x)) {
+            rightRotate(x.parent);
+        } else {
+            leftRotate(x.parent);
         }
-\end{verbatim}
+        if (x.parent() != null) {
+            restoreAfterInsertion(x);
+        }
+    }
+}
+\end{minted}
 
 %------------------------------------------------------------------------
 %                         Problem 4
@@ -195,7 +198,7 @@
 \begin{problem}{8}
 \end{problem}
 
-\begin{verbatim}
+\begin{minted}[baselinestretch=1.2,fontsize=\footnotesize,linenos]{java}
     private void restoreAfterDeletion(TreapNode x) {
         if (x.left == null) {
             if (x.right == null) {
@@ -251,7 +254,7 @@
             restoreAfterDeletion(x);
         }
     }
-\end{verbatim}
+\end{minted}
 
 
 %------------------------------------------------------------------------

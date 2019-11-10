@@ -16,7 +16,6 @@
 \newcommand{\rbr}{\rbrace}
 \renewcommand{\qed}{\hfill$\blacksquare$}
 \let\newproof\proof
-% \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{new``proof}\end{addmargin}\qed}
  
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
@@ -32,9 +31,12 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
- 
+\newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
+
+\usepackage{minted}
+
 \begin{document}
- 
+
 % --------------------------------------------------------------
 %                         Start here
 % --------------------------------------------------------------
@@ -47,7 +49,7 @@
 \lhead{CPSC 331}
 \chead{Assignment 2}
 \rhead{October 2019}
- 
+
 \maketitle{}
 
 \newpage
@@ -56,21 +58,18 @@
 %                         1
 % --------------------------------------------------------------
 \begin{problem}{1}
-Describe how an algorithm for the ``Treap Restoration after Insertion" problem could be
-used, along with an algorithm for insertion into a binary search tree, to obtain an algorithm for the ``Insertion into This Treap" problem. Briefly explain why the algorithm you
-have described would be correct
+    Describe how an algorithm for the ``Treap Restoration after Insertion" problem could be used, along with an algorithm for insertion into a binary search tree, to obtain an algorithm for the ``Insertion into This Treap" problem. Briefly explain why the algorithm you have described would be correct
 \end{problem}
 
-\begin{proof}
-The ``insertion into a binary search tree'' can be used along with ``Insertion into Subtree" algorithm. Whenever ``insertion into subtree"" algorithm is called with the preconditions satisfied, a node is included into the subtree with root \emph{x}- either by replacing the value at the node storing $k$, or by adding a new node if no such node existed.The ``insertion into the subtree" algorithm ensures that each element stored in a node in the left subtree of the subtree with root x is \emph{less than} the element stored at x, and each element stored in a node in the
-right subtree of the subtree with root x is \emph{greater than} the element stored at x. 
-\\ \\
-Once ``insertion into binary search tree" algorithm is executed, the elements \emph{E} int the Treap $T$ are stored satisfying property $(b)$ of the definition of Treaps.
-\\ \\
-We then continue with executing ``Treap Restoration after Insertion" algorithm with the preconditions satisfied.This ensured that he priority associated with each element of $E$, that is stored in Treap $T$, has not been changed. That is, if an element $e \in E$ and priority $p \in P$ were stored in the same node of $T$ before this computation began, then $e$ and $p$ are also both stored in the same node of T after the computation ends.
-\\ \\
-Once ``Treap Restoration after Insertion" algorithm is executed, the priorities $P$ are stored in the Treap $T$ satisfying property $(c)$ of the definition of the Treaps.
-\end{proof}
+\begin{solution}
+    The ``insertion into a binary search tree'' can be used along with ``Insertion into Subtree" algorithm. Whenever ``insertion into subtree"" algorithm is called with the preconditions satisfied, a node is included into the subtree with root \emph{x}- either by replacing the value at the node storing $k$, or by adding a new node if no such node existed.The ``insertion into the subtree" algorithm ensures that each element stored in a node in the left subtree of the subtree with root x is \emph{less than} the element stored at x, and each element stored in a node in the right subtree of the subtree with root x is \emph{greater than} the element stored at x.
+
+    $\newline$ Once ``insertion into binary search tree" algorithm is executed, the elements \emph{E} int the Treap $T$ are stored satisfying property $(b)$ of the definition of Treaps.
+
+    $\newline$ We then continue with executing ``Treap Restoration after Insertion" algorithm with the preconditions satisfied.This ensured that he priority associated with each element of $E$, that is stored in Treap $T$, has not been changed. That is, if an element $e \in E$ and priority $p \in P$ were stored in the same node of $T$ before this computation began, then $e$ and $p$ are also both stored in the same node of T after the computation ends.
+
+    $\newline$ Once ``Treap Restoration after Insertion" algorithm is executed, the priorities $P$ are stored in the Treap $T$ satisfying property $(c)$ of the definition of the Treaps.
+\end{solution}
 
 
 
@@ -78,12 +77,12 @@ Once ``Treap Restoration after Insertion" algorithm is executed, the priorities 
 %                         Problem 2
 %------------------------------------------------------------------------
 \begin{problem}{2}
-
+    Suppose that x is the left child of z, so that the subtree of T with root z is as shown in Figure 2. Show that if a right rotation at z is performed — resulting in subtree as shown in Figure 3 — then the precondition for the “Treap Restoration after Insertion” problem is still satisfied (using x as the input node, once again), the set of elements of E stored at nodes of T has not been changed, and the priority associated with each element of E stored in T has not been changed, either.
 \end{problem}
 
-\begin{proof}
+\begin{solution}
 
-\end{proof}
+\end{solution}
 
 
 
@@ -91,47 +90,202 @@ Once ``Treap Restoration after Insertion" algorithm is executed, the priorities 
 %                         Problem 3
 %------------------------------------------------------------------------
 \begin{problem}{3}
-$\newline$
-\begin{verbatim}
-    private void restoreAfterInsertion(TreapNode x) {
-        if (x.priority.compareTo(x.parent.priority()) == 1) {
-            if (x.parent.left() != null) {
-                if (x.parent.left().equals(x)) {
-                    rightRotate(x.parent);
-                } else {
-                    leftRotate(x.parent);
-                }
-            } else if (x.parent.right() != null) {
-                if (x.parent.right().equals(x)) {
-                    leftRotate(x.parent);
-                } else {
-                    rightRotate(x.parent);
-                }
-            }
+\end{problem}
+
+\begin{minted}[baselinestretch=1.2,fontsize=\footnotesize,linenos]{java}
+private void restoreAfterInsertion(TreapNode x) {
+    if (x.priority.compareTo(x.parent.priority()) == 1) {
+        if (x.parent.left() != null && x.parent.left.equals(x)) {
+            rightRotate(x.parent);
+        } else {
+            leftRotate(x.parent);
         }
-        if (x.parent() != null && x.priority.compareTo(x.parent.priority()) == 1) {
+        if (x.parent() != null) {
             restoreAfterInsertion(x);
         }
     }
-\end{verbatim}
-\end{problem}
-
-\begin{proof}
-
-\end{proof}
-
-
+}
+\end{minted}
 
 %------------------------------------------------------------------------
 %                         Problem 4
 %------------------------------------------------------------------------
 \begin{problem}{4}
+    Briefly describe how it can be shown that your algorithm is correct. Describe any proof techniques that are used in a proof of correctness along with loop invariants and bound functions for any loops in your code, bound functions for any recursive algorithm(s) you include, and describe how results that have already been established are used.
+\end{problem}
+
+\begin{solution}
+    A proof that the restoreAfterDeletion algorithm is correct aims to establish the claims made by the preconditions and postconditions. The proof makes use of the strong form of mathematical induction on the depth of the subtree with the non-null node $x$ as input. Furthermore, the depth of the subtree that has the node $x$ as the root can be used as a bound function for this recursive algorithm. Two main cases will be considered in the proof, 
+
+    \begin{enumerate}
+        \item when the priority of the node $x$ is greater than the priority of its parents priority, and
+        \item the case where the priority of the node $x$ is less than or equal to the priority of its parents priority.
+    \end{enumerate}
+
+    \noindent In case 1, we further consider two sub-cases,
+
+    \begin{enumerate}
+        \item the node $x$ is the left leaf node of its parent, in which case a right rotation is performed on the node $x$ and its parent. 
+        \item the node $x$ is the right leaf node of its parent, in which case a left rotation is performed on the node $x$ and its parent.
+    \end{enumerate}
+
+    \noindent Naturally, we would induct on the depth that the node $x$ travels to complete the restoration. And in case 2, the algorithm would simply halt as there is no restoration required. The proof would conclude in showing that when the execution of the algorithm halts, no additional data has been changed, namely the data stored in the sets $E$ and $P$ of the tree $T$ and that $T$ also satisfies all the Treap Properties.
+
+\end{solution}
+
+
+%------------------------------------------------------------------------
+%                         Problem 5
+%------------------------------------------------------------------------
+\begin{problem}{5}
+    Establish upper bounds for the number of steps executed by your algorithm and the storage space it requires — as functions of the size or depth of T or of a property of the input node x (which you should describe). Asymptotic notation can be used to answer this question — and your answer for this question should not be very long!
+\end{problem}
+
+\begin{solution}
+    Since the bound function for our restoreAfterDeletion algorithm is the depth of the subtree that has the node $x$ as its root, then the upper bound of the algorithm can be said to be linear in the depth of the subtree. Hence, the upper bound for the algorithm is $\mathcal{O}(n)$.
+\end{solution}
+
+
+%------------------------------------------------------------------------
+%                         Problem 6
+%------------------------------------------------------------------------
+\begin{problem}{6}
+    Show that if x has at most one child in this treap then the Treap properties are satisfied after the regular deletion operation ends — so that nothing more must be done to satisfy the post condition for the above problem in this case too.
+\end{problem}
+
+\begin{solution}
+    Suppose the \texttt{delete} method is executed with the with the precondition for the Treap Deletion initially satisfied, so that \texttt{T} satisfies the Treap properties and \texttt{x} is the node storing a non-null input key of type \texttt{E} that is found successfully within the Treap. Since \texttt{x} is non-null, then \texttt{T} must have at least one node such that the root is non-null as well, and additionally, since we are assuming that key is indeed found, and \texttt{x} is the value that stores the input key, then \texttt{x} exists, and a NoSuchElementException would not be thrown in this case. The deleteFromSubtree method is then called, where the node to be deleted is returned, which we will call \texttt{z}. Finally, execution is returned to the \texttt{delete} method, whereby \texttt{restoreAfterDeletion} is performed on the node \texttt{z} that was returned from the delete operation. We have three cases:
+
+    $\newline$\noindent\textbf{Case 1: left and right node at z are both null:} 
+
+    \noindent If \texttt{z} has no children, and the parent of \texttt{z} is null, then \texttt{z} is the root node, in which case the root would be set to null. In this case, \texttt{T} is now an empty tree, and satisfies the Treap definition. If \texttt{z} is has a non-null parent and the value of \texttt{z} is less than the value of its parent, then the left node at \texttt{z}'s parent is set to null. Otherwise, if the value of \texttt{z} is greater than the value of its parent, then the right node at \texttt{z}'s parent is set to null. Since \texttt{z} was a leaf node, and each node in \texttt{T} is still an ordered pair $(e, p)$ where $e \in E$ and $p \in P$, and the value of \texttt{z} was less than its parent, then \texttt{T} satisfies both $(a)$ and $(b)$ of the Treap definition. Finally, Since the priority of each node in the tree has not been modified, $(c)$ is satisfied as well.
+
+    $\newline$\noindent\textbf{Case 2: Left child at z is null but right child is not} 
+
+    In this case, \texttt{z} has a null left node but a non-null right node. If \texttt{z}’s parent is null, then \texttt{z} is the root, the parent node of \texttt{z}’s rightmost child is set to null, and the root is updated to \texttt{z}’s rightmost child. Since \texttt{z} was the root, and its children satisfy property $(b)$ of the Treap definition, then $(b)$ is indeed satisfied after its rightmost child has been updated to the root. If \texttt{z} does have a parent, and the value at \texttt{z} is less than its parent, then the left node at \texttt{z}’s parent is set to the right node at \texttt{z}, otherwise the right node at \texttt{z}’s parent is set to the right node at \texttt{z}. Finally, the parent of \texttt{z}’s right node is set to \texttt{z}’s own parent. Since each node in \texttt{T} is still an ordered pair $(e, p)$ where $e \in E$ and $p \in P$, and the value of \texttt{z} was less than its parent, then \texttt{T} satisfies both $(a)$ and $(b)$ of the Treap definition. Finally, Since the priority of each node in the tree has not been modified, $(c)$ is satisfied as well. 
+
+    $\newline$\noindent\textbf{Case 3: Left child at z is not null but right child is} 
+
+    \noindent In this case, \texttt{z} does not have a left child but has a right child. If the parent of \texttt{z} is null , then \texttt{z} is the root node, and the parent of \texttt{z}’s leftmost child is set to null, whereby the root of the tree is updated to \texttt{z}’s leftmost child. Since \texttt{z} was the root, and its children satisfy property $(b)$ of the Treap definition, then $(b)$ is indeed satisfied after its leftmost child has been updated to the root. If the parent at \texttt{z} is not null, and the value at \texttt{z} is less than its parent, then the left node at \texttt{z}’s parent is set to the current left child of \texttt{z}, otherwise if the value at \texttt{z} is greater than its parent, then the right node at \texttt{z}’s parent is set to the current left child of \texttt{z}. Finally, the parent of \texttt{z}’s left node is set to \texttt{z}’s own parent. Since each node in \texttt{T} is still an ordered pair $(e, p)$ where $e \in E$ and $p \in P$, and the value of \texttt{z} was less than its parent, then \texttt{T} satisfies both $(a)$ and $(b)$ of the Treap definition. Finally, Since the priority of each node in the tree has not been modified, $(c)$ is satisfied as well.
+
+    $\newline$\noindent Since we are only evaluating if the node \texttt{x} being deleted has at most 1 child in the Treap, then we do not need to consider the case if \texttt{x} has both a non-null left and right child, as no rotation is required in this case.
+\end{solution}
+
+
+
+%------------------------------------------------------------------------
+%                         Problem 7
+%------------------------------------------------------------------------
+\begin{problem}{7}
+    Suppose that the precondition for the above property is satisfied, x has a non-null left child, the priority stored at the left child of x is greater than the priority stored at x, and the priority stored at the left child of x is greater than or equal to the priority stored at the right child of x, if this child exists (and is not null). Show that, if a right rotation is performed at x (so that the left child of x becomes the parent of x) then the precondition for the “Treap Restoration after Deletion” problem is satisfied (using the same node, x) once again.
+\end{problem}
+
+\begin{solution}
+    Suppose the precondition for the ``Treap Restoration after Deletion'' problem is satisfied, and a right rotation is performed at \texttt{x} such that \texttt{x}
+    has a non-null left child, and the priority of the left child at \texttt{x} is greater than or equal to the priority at the right child of \texttt{x}, if it
+    exists. When \texttt{rightRotate} is called where \texttt{x} is passed as input, the leftmost child of \texttt{x} will be updated to the rightmost child of the leftmost
+    child of \texttt{x}. If the rightmost child of \texttt{x}’s leftmost child is not null, then the parent of this node will be set to \texttt{x}. Finally, the parent of
+    \texttt{x}’s leftmost child will be set to \texttt{x}’s current parent. If \texttt{x} does not have a parent, then the root of the tree will become \texttt{x}’s leftmost child.
+    Otherwise, if \texttt{x} is the same node stored at the rightmost child of \texttt{x}’s parent, then the rightmost child of \texttt{x} is set to the leftmost child of \texttt{x}.
+    If they are not the same node, then the leftmost child at \texttt{x}’s parent is set to the leftmost child at \texttt{x}. Finally, the rightmost child of \texttt{x}’s
+    leftmost child is set to \texttt{x}, and the parent of \texttt{x} is set to the original leftmost child of \texttt{x}.
+\end{solution}
+
+
+%------------------------------------------------------------------------
+%                         Problem 8
+%------------------------------------------------------------------------
+\begin{problem}{8}
+\end{problem}
+
+\begin{minted}[baselinestretch=1.2,fontsize=\footnotesize,linenos]{java}
+    private void restoreAfterDeletion(TreapNode x) {
+        if (x.left == null) {
+            if (x.right == null) {
+                // case 1: leaf node or root
+                if (x.parent == null) {
+                    root = null;
+                } else {
+                    TreapNode parent = x.parent;
+                    if (x.element.compareTo(parent.element) == -1) {
+                        parent.left = null;
+                    } else {
+                        parent.right = null;
+                    }
+                }
+            } else {
+                // case 2: left child is null but right child is not
+                TreapNode rightChild = x.right;
+                if (x.parent == null) {
+                    rightChild.parent = null;
+                    root = rightChild;
+                } else {
+                    TreapNode parent = x.parent;
+                    if (x.element.compareTo(parent.element) == -1) {
+                        parent.left = rightChild;
+                    } else {
+                        parent.right = rightChild;
+                    }
+                    rightChild.parent = parent;
+                }
+            }
+        } else if (x.right == null) {
+            // case 3: left child is not null but right child is
+            TreapNode leftChild = x.left;
+            if (x.parent == null) {
+                leftChild.parent = null;
+                root = leftChild;
+            } else {
+                TreapNode parent = x.parent;
+                if (x.element.compareTo(parent.element) == -1) {
+                    parent.left = leftChild;
+                } else {
+                    parent.right = leftChild;
+                }
+                leftChild.parent = parent;
+            }
+        } else {
+            // case 4: Neither the left nor the right of x is null (need to rotate)
+            if (x.left.priority.compareTo(x.right.priority) == 1) {
+                rightRotate(x);
+            } else {
+                leftRotate(x);
+            }
+            restoreAfterDeletion(x);
+        }
+    }
+\end{minted}
+
+
+%------------------------------------------------------------------------
+%                         Problem 9
+%------------------------------------------------------------------------
+\begin{problem}{9}
 
 \end{problem}
 
-\begin{proof}
+\begin{solution}
 
-\end{proof}
+\end{solution}
 
+
+%------------------------------------------------------------------------
+%                         Problem 10
+%------------------------------------------------------------------------
+\begin{problem}{10}
+
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+
+
+%------------------------------------------------------------------------
+%                         Problem 11
+%------------------------------------------------------------------------
+\begin{problem}{11}
+
+\end{problem}
 
 \end{document}

@@ -82,6 +82,24 @@
 
 \begin{solution}
 
+\begin{enumerate}
+    \item A non-empty binary tree $T$, satisfying treap properties (a) and (b), is accessed as global data.
+
+According to treap property (a), every node $T_1, T_2$ and $T_3$ is stored as an order pair $(e, p)$ such that $e \in E$ and $p \in P$. before (Figure 2) and after (Figure 3) rotation. 
+
+Following treap property (b), for node $z$ in $T$, the node $x$ is the \textbf{left child} of the subtree with root $z$ such that the element stored at $x$ is \textbf{less than} the element stored at $z$. After the rotation is performed, for node $x$ in $T$, the node $z$ is the \textbf{right child} of the subtree with the root $x$ such that the element stored at $z$ is \textbf{greater than} the element stored at $x$, satisfying treap property (b) pre and post rotation. 
+
+\item A node $x$ of $T$ is given as input.
+
+Since the \textbf{right rotation} doesn't change the data from sets $E$ and $P$, then the node $x$ of the subtree of $T$ with root $z$ is still given as an input. 
+\item For every node $y$ in $T$ except $x$, if $y$ is not the root of $T$ then the priority stored at $y$ is less than or equal to the priority stored at the part of $y$. Furthermore, the priority stored at $y$ is also less than or equal to the priority stored at the grandparent of $y$. 
+
+Every node except $x$, i.e. $T_1, T_2$ and $T_3$ has a priority that is less than or equal to the priority stored at the root $z$ in $T$. The priorities stored at $T_1$ and $T_2$ are less than or equal to the priorities stored at $x$ and the priority stored at $T_3$ is less than the priority stored at the root $z$, pre rotation.
+\\
+After \textbf{right rotation} is performed, the priorities stored at $T_1, T_2$ and $T_3$ are still less than or equal to the priority stored at the root $x$ in $T$. The priorities stored at $T_1$ is still less than or equal to the priority stored at $x$ post rotation as the parent of $T_1$ (i.e. $x$) has not changed. Similarly the priority stored at $T_3$ is less than equal to it's parent $z$ post rotation as the parent of $T_3$ (i.e. $z$) has not changed. However, the node $T_2$ is now the child of node $z$ and grandchild of node $x$. The priority stored at node $T_3$ is still less than or equal to the priority stored at the node $z$ as $z$ was the grandparent of node $T_3$ pre-rotation. The node $z$ has also has a priority less than or equal to $x$ post rotation according to the condition given in the problem.
+\end{enumerate}
+$\newline$
+Hence, the pre-condition of \textbf{Treap Restoration after Insertion} is still satisfied after a \textbf{right rotation} at $z$ is performed
 \end{solution}
 
 

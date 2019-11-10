@@ -133,7 +133,7 @@ private void restoreAfterInsertion(TreapNode x) {
 \end{problem}
 
 \begin{solution}
-    A proof that the restoreAfterDeletion algorithm is correct aims to establish the claims made by the preconditions and postconditions. The proof makes use of the strong form of mathematical induction on the depth of the subtree with the non-null node $x$ as input. Furthermore, the depth of the subtree that has the node $x$ as the root can be used as a bound function for this recursive algorithm. Two main cases will be considered in the proof, 
+    A proof that the restoreAfterInsertion algorithm is correct aims to establish the claims made by the preconditions and postconditions. The proof makes use of the strong form of mathematical induction on the depth of the subtree with the non-null node $x$ as input. Furthermore, the depth of the subtree that has the node $x$ as the root can be used as a bound function for this recursive algorithm. Two main cases will be considered in the proof, 
 
     \begin{enumerate}
         \item when the priority of the node $x$ is greater than the priority of its parents priority, and

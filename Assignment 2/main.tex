@@ -283,7 +283,19 @@ private void restoreAfterInsertion(TreapNode x) {
 \end{problem}
 
 \begin{solution}
+The proof of the algorithm \texttt{restoreAfterDeletion} tries to establish the claims made by the pre-conditions and post-conditions. A strong form of mathematical induction on the depth of the subtree with the non-null node $x$ as input. Furthermore, the depth of the subtree that has the node $x$ can be used as a bound function for this recursive algorithm. Two main cases will be considered for the proof:
 
+\begin{enumerate}
+    \item Both left and right leaf node of $x$ are \textbf{not} null.
+    \item  Either left or right, or both left and right leaf nodes of $x$ are null.
+\end{enumerate}
+
+Case $1.$ further has two cases to consider:
+\begin{enumerate}[label=(\alph*)]
+    \item Priority of the left node $x$ is greater than the priority of the right node $x$, in which case right rotation is performed on the node $x$.
+    \item Priority of the right node $x$ is greater than the priority of the left node $x$, in which case left rotation is performed on the node $x$.
+\end{enumerate}
+In case 1, we would induct on the depth that the node $x$ travels to complete the restoration and in case 2, the algorithm would never execute as their is no restoration required. The proof would conclude in showing that when the execution of the algorithm halts, no additional data has been changed, namely the data stored in the sets $E$ and $P$ of the tree $T$ and that $T$ satisfies all the Treap Properties.
 \end{solution}
 
 

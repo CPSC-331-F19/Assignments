@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{private} \PYG{k+kt}{void} \PYG{n+nf}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{TreapNode} \PYG{n}{x}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+        \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{!=} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{System}\PYG{o}{.}\PYG{n+na}{out}\PYG{o}{.}\PYG{n+na}{println}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}1\PYGZdq{}}\PYG{o}{);}
+                \PYG{n}{rightRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{)} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{System}\PYG{o}{.}\PYG{n+na}{out}\PYG{o}{.}\PYG{n+na}{println}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{o}{);}
+                \PYG{n}{leftRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}}
+            \PYG{n}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+        \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{!=} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{==} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{System}\PYG{o}{.}\PYG{n+na}{out}\PYG{o}{.}\PYG{n+na}{println}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}3\PYGZdq{}}\PYG{o}{);}
+                \PYG{n}{rightRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+                \PYG{n}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{o}{((}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{left} \PYG{o}{==} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{))} \PYG{o}{\PYGZob{}}
+            \PYG{k}{if} \PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{right}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{.}\PYG{n+na}{compareTo}\PYG{o}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n+na}{priority}\PYG{o}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+                \PYG{n}{System}\PYG{o}{.}\PYG{n+na}{out}\PYG{o}{.}\PYG{n+na}{println}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}4\PYGZdq{}}\PYG{o}{);}
+                \PYG{n}{leftRotate}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+                \PYG{n}{restoreAfterDeletion}\PYG{o}{(}\PYG{n}{x}\PYG{o}{);}
+            \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

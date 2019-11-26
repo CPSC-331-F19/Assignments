@@ -138,7 +138,7 @@ return B;
 private void insertionSort(ArrayList<T> B) {
 
     int i = 1;
-    while (i < B.length())
+    while (i < B.size())
     {
         int j = i;
         while ((j > 0) && (B.get(j-1).compareTo(B.get(j)) > 0))
@@ -174,8 +174,11 @@ private void split(ArrayList<T> A, ArrayList<T> B1, ArrayList<T> B2) {
 
 int i = 0;
 int index = 0;
-int size1 = Math.ceil(A.size()/2);
-int size2 = Math.floor(A.size()/2);
+int size1 = (int) Math.ceil(A.size()/2);
+int size2 = (int) Math.floor(A.size()/2);
+
+System.out.println(A.toString());
+
 for (i = 0; i < size1; i++)
 {
     B1.set(index, A.get(index));

@@ -1,6 +1,9 @@
 package cpsc331.assignment3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
 *
@@ -116,7 +119,7 @@ ArrayList<T> B = new ArrayList<T>();
 
 while (i < size)
 {
-    B.set(i, A.get(i));
+    B.add(i, A.get(i));
     i = i + 1;
 }
 
@@ -148,8 +151,9 @@ private void insertionSort(ArrayList<T> B) {
             B.set(j, temp);
             j = j-1;
         }
-        i = i + 1;
+        i += 1;
     }
+
 }
 
 //
@@ -172,26 +176,23 @@ private void split(ArrayList<T> A, ArrayList<T> B1, ArrayList<T> B2) {
 
 // For you to complete
 
-int i = 0;
-int index = 0;
-int size1 = (int) Math.ceil(A.size()/2);
-int size2 = (int) Math.floor(A.size()/2);
+    int i = 0;
+    int index = 0;
+    int size1 = (int) Math.ceil((double) A.size()/2);
+    int size2 = (int) Math.floor((double) A.size()/2);
 
-System.out.println(A.toString());
-
-for (i = 0; i < size1; i++)
-{
-    B1.set(index, A.get(index));
-    i = i + 1;
-    index = index + 1;
-}
-i = 0;
-for (i = 0; i < size2; i++)
-{
-    B2.set(index, A.get(index));
-    i = i + 1;
-    index = index + 1;
-}
+    for (i = 0; i < size1; i++)
+    {
+        B1.add(i, A.get(index));
+        index = index + 1;
+    }
+    i = 0;
+    // index = 0;
+    for (i = 0; i < size2; i++)
+    {
+        B2.add(i, A.get(index));
+        index = index + 1;
+    }
 
 
 }
@@ -222,7 +223,10 @@ private ArrayList<T> merge(ArrayList<T> C1, ArrayList<T> C2) {
 int n1 = C1.size();
 int n2 = C2.size();
 
-ArrayList<T> D = new ArrayList<T>();
+ArrayList<T> D = new ArrayList<T>(n1 + n2);
+for(int i = 0; i < (n1 + n2); i++) {
+    D.add(null);
+}
 
 int i1 = 0;
 int i2 = 0;
@@ -230,15 +234,30 @@ int j = 0;
 
 while ((i1 < n1) && (i2 < n2))
 {
-    if (C1.get(i1).compareTo(C2.get(i2)) <= 0)
+    if (C1.get(i1) != null && C2.get(i2) != null && C1.get(i1).compareTo(C2.get(i2)) <= 0)
     {
-        C1.set(i1, D.get(j));
-        i1 = i1 + 1;
+        D.set(j, C1.get(i1));
+        i1++;
     } else {
-        C2.set(i2, D.get(j));
+        D.set(j, C2.get(i2));
+        i2++;
     }
-    j = j + 1;
-} 
+    j++;
+}
+
+while (i1 < n1) {
+    D.set(j, C1.get(i1));
+    i1++;
+    j++;
+}
+
+while (i2 < n2) {
+    D.set(j, C2.get(i2));
+    i2++;
+    j++;
+}
+
+
 return D;
 }
 

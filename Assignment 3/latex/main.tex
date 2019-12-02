@@ -61,6 +61,15 @@
 \end{problem}
 
 \begin{solution}
+
+\textbf{Claim:} The hybrid sorting algorithm correctly solves the sorting problem.
+$\newline$
+\textbf{Method of Proof:} Induction on length \texttt{n = A.length} of the input ArrayList - using strong form of mathematical induction. Consider \texttt{A.length = THRESHOLD} for the base case. 
+\begin{enumerate}
+    \item By examining the algorithm, the test at line 1 passes and the execution continues with line $2$ and $3$. Eventually executing line $4$ and halting while returning sorted ArrayList B as output. This is sufficient to complete the basis. 
+    
+    \item An application of the inductive hypothesis when the steps at line $8$ and $9$ are executed and the correctness of \texttt{merge} algorithm at line $10$ is sufficient to complete the inductive step. 
+\end{enumerate}
 \end{solution}
 
 %------------------------------------------------------------------------
@@ -94,6 +103,7 @@
 \end{problem}
 
 \begin{solution}
+The implementation of ``Merge Sort" algorithm is more important. We can replace the ``Merge Sort" algorithm with ``Quick Sort" algorithm in order to improve the performance. Even though ``Quick Sort" has a $O(n^2)$ in the worst case, it can easily be avoided by choosing the right pivot. Also, quick sort requires less memory than merge sort. 
 \end{solution}
 
 %------------------------------------------------------------------------

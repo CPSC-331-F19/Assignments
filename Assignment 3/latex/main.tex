@@ -88,8 +88,8 @@ $\newline$
 %                         Problem 3
 %------------------------------------------------------------------------
 \begin{problem}{3}
-
-Proof by induction on $n$: Let $n=\texttt{THRESHOLD = 2}$, then it is necessary to consider the following base cases on $n$: \newline
+\begin{proof}
+By induction on $n$: Let $n=\texttt{THRESHOLD = 2}$, then it is necessary to consider the following base cases on $n$: \newline
 
 $n=0: T_{THRESHOLD}(0) = a0^2 + \beta0 + \delta \leq a0^2 + \beta0 + \delta = T(0, 2)$
 
@@ -100,7 +100,7 @@ $n=2: T_{THRESHOLD}(2) = a2^2 + \beta2 + \delta \leq a2^2 + \beta2 + \delta = T(
 
 \textbf{Inductive hypothesis:} Let $k$ be the length of the array and suppose $T_{\texttt{THRESHOLD}}(i) < T(i, \texttt{THRESHOLD})$ for all $0 \leq i \leq \texttt{THRESHOLD}$. \newline
 
-\textbf{Inductive Claim:} Show that $T_{\texttt{THRESHOLD}}(k+1) \leq T((k+1), \texttt{THRESHOLD})$ for all $k > 2$. \newline
+\textbf{Inductive Claim:} Show that $T_{\texttt{THRESHOLD}}(k+1) \leq T((k+1), \texttt{THRESHOLD})$ for all $k > 2$.
 
 We have:
 
@@ -110,6 +110,7 @@ We have:
    & = T((k+1), \texttt{THRESHOLD}) & \text{ as required.} \\
 \end{flalign*}
 
+\end{proof}
 \end{problem}
 
 %------------------------------------------------------------------------
